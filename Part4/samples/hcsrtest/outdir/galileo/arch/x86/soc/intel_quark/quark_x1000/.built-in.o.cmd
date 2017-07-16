@@ -1,0 +1,1 @@
+cmd_arch/x86/soc/intel_quark/quark_x1000/built-in.o :=  /opt/zephyr-sdk/sysroots/i686-pokysdk-linux/usr/bin/i586-poky-elf/i586-poky-elf-ld -nostartfiles -nodefaultlibs -nostdlib -static   -r -o arch/x86/soc/intel_quark/quark_x1000/built-in.o arch/x86/soc/intel_quark/quark_x1000/soc.o 

@@ -1,0 +1,1 @@
+cmd_drivers/adc/built-in.o :=  /opt/zephyr-sdk/sysroots/i686-pokysdk-linux/usr/bin/i586-poky-elf/i586-poky-elf-ld -nostartfiles -nodefaultlibs -nostdlib -static   -r -o drivers/adc/built-in.o drivers/adc/adc_ti_adc108s102.o 

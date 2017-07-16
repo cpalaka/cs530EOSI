@@ -1,0 +1,38 @@
+menuconfig HCSR
+	bool
+	prompt "HCSR Driver"
+	default y
+
+config HCSR0_NAME
+	string
+	depends on PINMUX && BOARD_GALILEO
+	prompt "hcsr0 name"
+	default "HCSR0"
+
+config HCSR1_NAME
+	string
+	depends on PINMUX && BOARD_GALILEO
+	prompt "hcsr1 name"
+	default "HCSR1"
+
+config HCSR0_ECHO_PIN
+	int
+	depends on PINMUX && BOARD_GALILEO
+	prompt "Hcsr1 trigger pin"
+	default 6
+
+config HCSR0_TRIGGER_PIN
+	int
+	depends on PINMUX && BOARD_GALILEO
+	prompt "Hcsr1 trigger pin"
+	default 13
+
+#config HCSR1_ECHO_PIN
+#	int
+#	depends on PINMUX && BOARD_GALILEO
+#	prompt "Hcsr1 trigger pin"
+
+#config HCSR1_TRIGGER_PIN
+#	int
+#	depends on PINMUX && BOARD_GALILEO
+#	prompt "Hcsr1 trigger pin"

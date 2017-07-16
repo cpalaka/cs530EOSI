@@ -1,0 +1,1000 @@
+From 417003c05506255c8e9bd6a4792c038351d9b698 Mon Sep 17 00:00:00 2001
+From: Chaitanya Palaka <cpalaka@asu.edu>
+Date: Tue, 29 Nov 2016 13:26:48 -0700
+Subject: [PATCH 1/2] Added HCSR04 driver files.
+
+---
+ boards/galileo/Kconfig             |  27 +++++++
+ drivers/hcsr04/Kconfig             |   3 +
+ drivers/hcsr04/Makefile            |   1 +
+ drivers/hcsr04/hcsr_driver.c       | 148 +++++++++++++++++++++++++++++++++++++
+ drivers/hcsr04/hcsr_driver.h       |  36 +++++++++
+ samples/hcsrtest/Makefile          |   4 +
+ samples/hcsrtest/prj.conf          |   1 +
+ samples/hcsrtest/src/Makefile      |   1 +
+ samples/hcsrtest/src/hcsr_driver.h |  36 +++++++++
+ samples/hcsrtest/src/test.c        |  25 +++++++
+ 10 files changed, 282 insertions(+)
+ create mode 100644 boards/galileo/Kconfig
+ create mode 100644 drivers/hcsr04/Kconfig
+ create mode 100644 drivers/hcsr04/Makefile
+ create mode 100755 drivers/hcsr04/hcsr_driver.c
+ create mode 100755 drivers/hcsr04/hcsr_driver.h
+ create mode 100644 samples/hcsrtest/Makefile
+ create mode 100644 samples/hcsrtest/prj.conf
+ create mode 100644 samples/hcsrtest/src/Makefile
+ create mode 100755 samples/hcsrtest/src/hcsr_driver.h
+ create mode 100755 samples/hcsrtest/src/test.c
+
+diff --git a/boards/galileo/Kconfig b/boards/galileo/Kconfig
+new file mode 100644
+index 0000000..eef4009
+--- /dev/null
++++ b/boards/galileo/Kconfig
+@@ -0,0 +1,27 @@
++config HCSR0_NAME
++	string
++	prompt "hcsr0 name"
++	default "HCSR0"
++
++config HCSR1_NAME
++	string
++	prompt "hcsr1 name"
++	default "HCSR1"
++
++config HCSR0_ECHO_PIN
++	int
++	prompt "Hcsr1 trigger pin"
++	default 6
++
++config HCSR0_TRIGGER_PIN
++	int
++	prompt "Hcsr1 trigger pin"
++	default 13
++
++#config HCSR1_ECHO_PIN
++#	int
++#	prompt "Hcsr1 trigger pin"
++
++#config HCSR1_TRIGGER_PIN
++#	int
++#	prompt "Hcsr1 trigger pin"
+diff --git a/drivers/hcsr04/Kconfig b/drivers/hcsr04/Kconfig
+new file mode 100644
+index 0000000..d69d9b9
+--- /dev/null
++++ b/drivers/hcsr04/Kconfig
+@@ -0,0 +1,3 @@
++config HCSR_DEVICE
++	bool
++	default n
+diff --git a/drivers/hcsr04/Makefile b/drivers/hcsr04/Makefile
+new file mode 100644
+index 0000000..2453a02
+--- /dev/null
++++ b/drivers/hcsr04/Makefile
+@@ -0,0 +1 @@
++obj-$(CONFIG_HCSR_DEVICE) += hcsr_driver.o
+diff --git a/drivers/hcsr04/hcsr_driver.c b/drivers/hcsr04/hcsr_driver.c
+new file mode 100755
+index 0000000..1753192
+--- /dev/null
++++ b/drivers/hcsr04/hcsr_driver.c
+@@ -0,0 +1,148 @@
++#include <nanokernel.h>
++#include <microkernel.h>
++#include <gpio.h>
++#include <misc/printk.h>
++#include <misc/util.h>
++#include <device.h>
++#include <init.h>
++#include <zephyr.h>
++#include <errno.h>
++#include <kernel.h>
++#include "hcsr_driver.c"
++
++int take_reading(struct device* dev) {
++	int ret;
++	struct hcsr_driver_data* data = (struct hcsr_driver_data*)dev->driver_data;
++	//trigger hcsr device for 10 microsec
++	ret = gpio_pin_write(gpio_0, 5, 1);
++	task_sleep(USEC(10));
++	ret = gpio_pin_write(gpio_0, 5, 0);
++	data->is_measuring = true;
++	//start timer
++	data->timestamp = k_uptime_get();
++}
++
++void gpio_callback(struct device* port, struct gpio_callback* cb, uint32_t pins) {
++	printk("in callback fn\n");
++	int64_t timeinms;
++	struct hcsr_driver_data* data = CONTAINER_OF(cb, struct hcsr_driver_data, gpio_cb);
++	timeinms = k_uptime_delta(&data->timestamp);
++
++	data->distance_measure = timeinms / 58;
++	data->is_measuring = false;
++}
++
++int _reset(struct device* dev) {
++	printk("in reset\n");
++	struct hcsr_driver_data* data = (struct hcsr_driver_data*) dev->driver_data;
++	
++	data->is_measuring = false;
++	data->distance_measure = -1;
++	return 1;
++}
++
++int _read(struct device* dev, int32_t timeout) {
++	printk("in read\n");
++	struct hcsr_driver_data* data = (struct hcsr_driver_data*)dev->driver_data;
++	int ret=-1;
++	if(data->is_measuring == false) {
++		if(data->distance_measure = -1) {
++			//take new measurement
++			take_reading(dev);
++		} else {
++			ret = data->distance_measure;
++		}
++		
++	} else {
++		//block until reading comes in, or timeout ms is over
++		task_sleep(USEC(timeout));
++		if(data->is_measuring == false) {
++			ret = data->distance_measure;
++		}
++	}
++	//clear latest reading
++	data->distance_measure = -1;
++	return ret;
++}
++
++int _write(struct device* dev) {
++	printk("in write\n");
++	struct hcsr_driver_data* data = (struct hcsr_driver_data*) dev->driver_data;
++	int ret = 1;
++	data->distance_measure = -1;
++	if(data->is_measuring==false) {
++		//take new measurement
++		take_reading(dev);
++	}
++
++	return ret;
++}
++
++static struct hcsr_api driver_api = {
++	.reset = _reset,
++	.read  = _read,
++	.write = _write,
++};
++
++int hcsr_init(struct device *dev) {
++	printk("in init\n");
++	struct hcsr_driver_data* data = (struct hcsr_driver_data*) dev->driver_data;
++	
++	//struct device *gpio_cw = device_get_binding("GPIO_CW");
++	//struct device *gpio_rw = device_get_binding("GPIO_RW");
++	struct device *gpio_0 = device_get_binding("GPIO_0");
++	//struct device *exp0 = device_get_binding("EXP0");
++	struct device *exp1 = device_get_binding("EXP1");
++	///struct device *exp2 = device_get_binding("EXP2");
++	struct device *pwm0 = device_get_binding("PWM0");
++
++	if(gpio_cw == NULL || gpio_rw == NULL || gpio_0 == NULL || exp0 == NULL || exp1 == NULL || exp2 == NULL || pwm0 == NULL) {
++		printk("Failed to get device binding.\n");
++		return -EIO;
++	}
++
++	//setup trigger pin for hcsr0 (IO2 - gpio13)
++	gpio_pin_write(pwm0, 13, 0);//gpio 77 low
++	gpio_pin_write(exp1, 2, 0);//gpio 34 low
++	
++	gpio_pin_configure(gpio_0,5, GPIO_DIR_OUT);
++
++	//setup echo pin for hcsr0 (IO4 - gpio6)
++	gpio_pin_write(exp1,4,1);//gpio 36 high
++	//configure so triggers interrupt on rising edge
++	gpio_pin_configure(gpio_0,5, GPIO_DIR_IN | GPIO_INT | GPIO_INT_ACTIVE_HIGH |GPIO_INT_EDGE |GPIO_INT_DEBOUNCE);
++	
++	//initialize semaphore
++	k_sem_init(&data->sem_lock, 1,1);
++
++	//setup callback functions
++	gpio_init_callback(&data->gpio_cb, gpio_callback, BIT(5));
++	gpio_add_callback(gpio_0, &data->gpio_cb);
++	gpio_pin_enable_callback(gpio_0, 5);
++	//set api functions inside device struct
++	dev->driver_api = &driver_api;
++}
++
++//initialize first device
++
++static struct hcsr_driver_data drvdata0 = {
++	.is_measuring = false,
++	.distance_measure = -1,
++};
++
++DEVICE_AND_API_INIT(HCSR0, CONFIG_HCSR0_NAME,
++				 hcsr_init, &drvdata0,NULL, SECONDARY,
++				 CONFIG_KERNEL_INIT_PRIORITY_DEFAULT, (void *)&driver_api);
++
++/*
++//initialize second device
++static struct hcsr_driver_data drvdata1 = {
++	.is_measuring = false,
++	.distance_measure = -1,
++};
++
++DEVICE_AND_API_INIT(HCSR1, CONFIG_HCSR1_NAME,
++				 hcsr_init, &drvdata1,NULL, SECONDARY,
++				 CONFIG_KERNEL_INIT_PRIORITY_DEFAULT, (void *)&driver_api);
++
++*/
+\ No newline at end of file
+diff --git a/drivers/hcsr04/hcsr_driver.h b/drivers/hcsr04/hcsr_driver.h
+new file mode 100755
+index 0000000..73cc772
+--- /dev/null
++++ b/drivers/hcsr04/hcsr_driver.h
+@@ -0,0 +1,36 @@
++#ifndef __HCSR_DRVR_H__
++#define __HCSR_DRVR_H__
++
++#include <misc/util.h>
++#include <device.h>
++#include <gpio.h>
++
++extern int hcsr_init(struct device *dev);
++
++//struct gpio_callback dev1_cb, dev2_cb;
++
++typedef int (*hcsr_reset)(struct device* dev);
++typedef int (*hcsr_read)(struct device* dev, int32_t timeout);
++typedef int (*hcsr_write)(struct device* dev);
++
++struct hcsr_api {
++	hcsr_reset reset;
++	hcsr_read read;
++	hcsr_write write;
++};
++
++
++struct hcsr_driver_data {
++	//is the device currently measuring
++	bool is_measuring;
++	//per device buffer to save last reading
++	int distance_measure;
++	//add start time/end time variables
++	int64_t timestamp;
++	struct k_sem sem_lock;
++	struct gpio_callback gpio_cb;
++};
++
++
++
++#endif
+\ No newline at end of file
+diff --git a/samples/hcsrtest/Makefile b/samples/hcsrtest/Makefile
+new file mode 100644
+index 0000000..bcff330
+--- /dev/null
++++ b/samples/hcsrtest/Makefile
+@@ -0,0 +1,4 @@
++BOARD ?= galileo
++CONF_FILE = prj.conf
++
++include ${ZEPHYR_BASE}/Makefile.inc
+diff --git a/samples/hcsrtest/prj.conf b/samples/hcsrtest/prj.conf
+new file mode 100644
+index 0000000..ba38a01
+--- /dev/null
++++ b/samples/hcsrtest/prj.conf
+@@ -0,0 +1 @@
++##
+diff --git a/samples/hcsrtest/src/Makefile b/samples/hcsrtest/src/Makefile
+new file mode 100644
+index 0000000..4885899
+--- /dev/null
++++ b/samples/hcsrtest/src/Makefile
+@@ -0,0 +1 @@
++obj-y += test.o
+diff --git a/samples/hcsrtest/src/hcsr_driver.h b/samples/hcsrtest/src/hcsr_driver.h
+new file mode 100755
+index 0000000..73cc772
+--- /dev/null
++++ b/samples/hcsrtest/src/hcsr_driver.h
+@@ -0,0 +1,36 @@
++#ifndef __HCSR_DRVR_H__
++#define __HCSR_DRVR_H__
++
++#include <misc/util.h>
++#include <device.h>
++#include <gpio.h>
++
++extern int hcsr_init(struct device *dev);
++
++//struct gpio_callback dev1_cb, dev2_cb;
++
++typedef int (*hcsr_reset)(struct device* dev);
++typedef int (*hcsr_read)(struct device* dev, int32_t timeout);
++typedef int (*hcsr_write)(struct device* dev);
++
++struct hcsr_api {
++	hcsr_reset reset;
++	hcsr_read read;
++	hcsr_write write;
++};
++
++
++struct hcsr_driver_data {
++	//is the device currently measuring
++	bool is_measuring;
++	//per device buffer to save last reading
++	int distance_measure;
++	//add start time/end time variables
++	int64_t timestamp;
++	struct k_sem sem_lock;
++	struct gpio_callback gpio_cb;
++};
++
++
++
++#endif
+\ No newline at end of file
+diff --git a/samples/hcsrtest/src/test.c b/samples/hcsrtest/src/test.c
+new file mode 100755
+index 0000000..34b1201
+--- /dev/null
++++ b/samples/hcsrtest/src/test.c
+@@ -0,0 +1,25 @@
++#include <nanokernel.h>
++#include <microkernel.h>
++#include <gpio.h>
++#include <misc/printk.h>
++#include <misc/util.h>
++#include <device.h>
++#include <init.h>
++#include <zephyr.h>
++#include <errno.h>
++#include <kernel.h>
++#include "hcsr_driver.h"
++
++void main(void) {
++	struct device* hcsr = device_get_binding("HCSR0");
++	struct hcsr_api* api = hcsr->driver_api;
++	int ret;
++
++	api->reset(hcsr);
++	api->write(hcsr);
++	task_sleep(USEC(5000000));
++	ret = api->read(hcsr, 1000);
++	if(ret==-1) {
++		printk("read failed.\n");
++	}
++}
+\ No newline at end of file
+-- 
+1.9.1
+
+
+From 6e8329b059dddee1b39c0b04b503933614442f8b Mon Sep 17 00:00:00 2001
+From: Chaitanya Palaka <cpalaka@asu.edu>
+Date: Tue, 29 Nov 2016 23:14:23 -0700
+Subject: [PATCH 2/2] Added files for EEPROM as well
+
+---
+ boards/galileo/Kconfig             |  11 +++
+ drivers/hcsr04/Makefile            |   4 +-
+ drivers/hcsr04/hcsr_driver.c       | 111 +++++++++++++++++----------
+ drivers/hcsr04/hcsr_driver.h       |   5 +-
+ samples/HCSR_app/Makefile          |   4 +
+ samples/HCSR_app/prj.conf          |   0
+ samples/HCSR_app/src/Makefile      |   1 +
+ samples/HCSR_app/src/hcsr_driver.h |  37 +++++++++
+ samples/HCSR_app/src/shellmod.c    | 151 +++++++++++++++++++++++++++++++++++++
+ samples/hcsrtest/src/hcsr_driver.h |   5 +-
+ samples/hcsrtest/src/test.c        |  39 +++++++++-
+ 11 files changed, 320 insertions(+), 48 deletions(-)
+ create mode 100644 samples/HCSR_app/Makefile
+ create mode 100644 samples/HCSR_app/prj.conf
+ create mode 100644 samples/HCSR_app/src/Makefile
+ create mode 100755 samples/HCSR_app/src/hcsr_driver.h
+ create mode 100755 samples/HCSR_app/src/shellmod.c
+
+diff --git a/boards/galileo/Kconfig b/boards/galileo/Kconfig
+index eef4009..2b070ad 100644
+--- a/boards/galileo/Kconfig
++++ b/boards/galileo/Kconfig
+@@ -1,27 +1,38 @@
++menuconfig HCSR
++	bool
++	prompt "HCSR Driver"
++	default y
++
+ config HCSR0_NAME
+ 	string
++	depends on PINMUX && BOARD_GALILEO
+ 	prompt "hcsr0 name"
+ 	default "HCSR0"
+ 
+ config HCSR1_NAME
+ 	string
++	depends on PINMUX && BOARD_GALILEO
+ 	prompt "hcsr1 name"
+ 	default "HCSR1"
+ 
+ config HCSR0_ECHO_PIN
+ 	int
++	depends on PINMUX && BOARD_GALILEO
+ 	prompt "Hcsr1 trigger pin"
+ 	default 6
+ 
+ config HCSR0_TRIGGER_PIN
+ 	int
++	depends on PINMUX && BOARD_GALILEO
+ 	prompt "Hcsr1 trigger pin"
+ 	default 13
+ 
+ #config HCSR1_ECHO_PIN
+ #	int
++#	depends on PINMUX && BOARD_GALILEO
+ #	prompt "Hcsr1 trigger pin"
+ 
+ #config HCSR1_TRIGGER_PIN
+ #	int
++#	depends on PINMUX && BOARD_GALILEO
+ #	prompt "Hcsr1 trigger pin"
+diff --git a/drivers/hcsr04/Makefile b/drivers/hcsr04/Makefile
+index 2453a02..6d68b95 100644
+--- a/drivers/hcsr04/Makefile
++++ b/drivers/hcsr04/Makefile
+@@ -1 +1,3 @@
+-obj-$(CONFIG_HCSR_DEVICE) += hcsr_driver.o
++ccflags-y +=-I$(srctree)/drivers
++
++obj-y += hcsr_driver.o
+diff --git a/drivers/hcsr04/hcsr_driver.c b/drivers/hcsr04/hcsr_driver.c
+index 1753192..d0b46de 100755
+--- a/drivers/hcsr04/hcsr_driver.c
++++ b/drivers/hcsr04/hcsr_driver.c
+@@ -1,21 +1,27 @@
+-#include <nanokernel.h>
++#include <device.h>
+ #include <microkernel.h>
+ #include <gpio.h>
+ #include <misc/printk.h>
+ #include <misc/util.h>
+-#include <device.h>
++
+ #include <init.h>
+ #include <zephyr.h>
+ #include <errno.h>
+ #include <kernel.h>
+ #include "hcsr_driver.c"
+ 
++struct device* gpio_0;
++struct device* gpio_rw;
++struct device* exp1;
++struct device* pwm0;
++struct device *exp0;
++
+ int take_reading(struct device* dev) {
+ 	int ret;
+ 	struct hcsr_driver_data* data = (struct hcsr_driver_data*)dev->driver_data;
+ 	//trigger hcsr device for 10 microsec
+ 	ret = gpio_pin_write(gpio_0, 5, 1);
+-	task_sleep(USEC(10));
++	k_sleep(USEC(10)/1000);
+ 	ret = gpio_pin_write(gpio_0, 5, 0);
+ 	data->is_measuring = true;
+ 	//start timer
+@@ -26,13 +32,15 @@ void gpio_callback(struct device* port, struct gpio_callback* cb, uint32_t pins)
+ 	printk("in callback fn\n");
+ 	int64_t timeinms;
+ 	struct hcsr_driver_data* data = CONTAINER_OF(cb, struct hcsr_driver_data, gpio_cb);
++	k_sem_take(&data->sem_lock,20*1000);
+ 	timeinms = k_uptime_delta(&data->timestamp);
+ 
+ 	data->distance_measure = timeinms / 58;
+ 	data->is_measuring = false;
++	k_sem_give(&data->sem_lock);
+ }
+ 
+-int _reset(struct device* dev) {
++static int _reset(struct device* dev) {
+ 	printk("in reset\n");
+ 	struct hcsr_driver_data* data = (struct hcsr_driver_data*) dev->driver_data;
+ 	
+@@ -41,10 +49,12 @@ int _reset(struct device* dev) {
+ 	return 1;
+ }
+ 
+-int _read(struct device* dev, int32_t timeout) {
++static int _read(struct device* dev, int32_t timeout) {
+ 	printk("in read\n");
+ 	struct hcsr_driver_data* data = (struct hcsr_driver_data*)dev->driver_data;
+ 	int ret=-1;
++	k_sem_take(&data->sem_lock, 20*1000);
++
+ 	if(data->is_measuring == false) {
+ 		if(data->distance_measure = -1) {
+ 			//take new measurement
+@@ -55,72 +65,90 @@ int _read(struct device* dev, int32_t timeout) {
+ 		
+ 	} else {
+ 		//block until reading comes in, or timeout ms is over
+-		task_sleep(USEC(timeout));
++		k_sleep(MSEC(timeout));
+ 		if(data->is_measuring == false) {
+ 			ret = data->distance_measure;
+ 		}
+ 	}
+ 	//clear latest reading
+ 	data->distance_measure = -1;
++	k_sem_give(&data->sem_lock);
+ 	return ret;
+ }
+ 
+-int _write(struct device* dev) {
++static int _write(struct device* dev) {
+ 	printk("in write\n");
+ 	struct hcsr_driver_data* data = (struct hcsr_driver_data*) dev->driver_data;
+ 	int ret = 1;
++	k_sem_take(&data->sem_lock, 20*1000);
+ 	data->distance_measure = -1;
+ 	if(data->is_measuring==false) {
+ 		//take new measurement
+ 		take_reading(dev);
+ 	}
+-
++	k_sem_give(&data->sem_lock);
+ 	return ret;
+ }
+ 
+-static struct hcsr_api driver_api = {
++static const struct hcsr_api driver_api = {
+ 	.reset = _reset,
+ 	.read  = _read,
+ 	.write = _write,
+ };
+ 
+ int hcsr_init(struct device *dev) {
+-	printk("in init\n");
++	//printk("in init\n");
+ 	struct hcsr_driver_data* data = (struct hcsr_driver_data*) dev->driver_data;
+-	
++	//set api functions inside device struct
++	dev->driver_api = &driver_api;
++
+ 	//struct device *gpio_cw = device_get_binding("GPIO_CW");
+-	//struct device *gpio_rw = device_get_binding("GPIO_RW");
+-	struct device *gpio_0 = device_get_binding("GPIO_0");
+-	//struct device *exp0 = device_get_binding("EXP0");
+-	struct device *exp1 = device_get_binding("EXP1");
++	gpio_rw = device_get_binding("GPIO_RW");
++	gpio_0 = device_get_binding("GPIO_0");
++	exp0 = device_get_binding("EXP0");
++	exp1 = device_get_binding("EXP1");
+ 	///struct device *exp2 = device_get_binding("EXP2");
+-	struct device *pwm0 = device_get_binding("PWM0");
++	pwm0 = device_get_binding("PWM0");
+ 
+-	if(gpio_cw == NULL || gpio_rw == NULL || gpio_0 == NULL || exp0 == NULL || exp1 == NULL || exp2 == NULL || pwm0 == NULL) {
++	if(gpio_rw == NULL || gpio_0 == NULL || exp1 == NULL || pwm0 == NULL) {
+ 		printk("Failed to get device binding.\n");
+ 		return -EIO;
+ 	}
+ 
+-	//setup trigger pin for hcsr0 (IO2 - gpio13)
+-	gpio_pin_write(pwm0, 13, 0);//gpio 77 low
+-	gpio_pin_write(exp1, 2, 0);//gpio 34 low
+-	
+-	gpio_pin_configure(gpio_0,5, GPIO_DIR_OUT);
+-
+-	//setup echo pin for hcsr0 (IO4 - gpio6)
+-	gpio_pin_write(exp1,4,1);//gpio 36 high
+-	//configure so triggers interrupt on rising edge
+-	gpio_pin_configure(gpio_0,5, GPIO_DIR_IN | GPIO_INT | GPIO_INT_ACTIVE_HIGH |GPIO_INT_EDGE |GPIO_INT_DEBOUNCE);
+-	
++	if(data->dev_no == 0) {//for hcsr0
++		//setup trigger pin for hcsr0 (IO2 - gpio13)
++		gpio_pin_write(pwm0, 13, 0);//gpio 77 low
++		gpio_pin_write(exp1, 2, 0);//gpio 34 low
++		
++		gpio_pin_configure(gpio_0,5, GPIO_DIR_OUT);
++
++		//setup echo pin for hcsr0 (IO4 - gpio6)
++		gpio_pin_write(exp1,4,1);//gpio 36 high
++		//configure so triggers interrupt on rising edge
++		gpio_pin_configure(gpio_rw,4, GPIO_DIR_IN | GPIO_INT | GPIO_INT_ACTIVE_HIGH |GPIO_INT_EDGE |GPIO_INT_DEBOUNCE);
++
++		//setup callback functions
++		gpio_init_callback(&data->gpio_cb, gpio_callback, BIT(4));
++		gpio_add_callback(gpio_rw, &data->gpio_cb);
++		gpio_pin_enable_callback(gpio_rw, 4);
++	} else {//for hcsr1
++		//setup trigger pin for hcsr1 (IO10 - gpio10)
++		gpio_pin_write(pwm0,10,0);
++		gpio_pin_write(exp0,10,0);
++		gpio_pin_configure( gpio_0,2,GPIO_DIR_OUT);
++
++		//setup echo pin for hcsr1 (IO9 - gpio4)
++		gpio_pin_write(pwm0,6,0);
++		gpio_pin_write(exp0, 6,0);
++		gpio_pin_configure(gpio_rw,2, GPIO_DIR_IN | GPIO_INT | GPIO_INT_ACTIVE_HIGH |GPIO_INT_EDGE |GPIO_INT_DEBOUNCE);
++		
++		//setup callback functions
++		gpio_init_callback(&data->gpio_cb, gpio_callback, BIT(2));
++		gpio_add_callback(gpio_rw, &data->gpio_cb);
++		gpio_pin_enable_callback(gpio_rw, 2);
++	}
+ 	//initialize semaphore
+ 	k_sem_init(&data->sem_lock, 1,1);
+-
+-	//setup callback functions
+-	gpio_init_callback(&data->gpio_cb, gpio_callback, BIT(5));
+-	gpio_add_callback(gpio_0, &data->gpio_cb);
+-	gpio_pin_enable_callback(gpio_0, 5);
+-	//set api functions inside device struct
+-	dev->driver_api = &driver_api;
+ }
+ 
+ //initialize first device
+@@ -128,21 +156,22 @@ int hcsr_init(struct device *dev) {
+ static struct hcsr_driver_data drvdata0 = {
+ 	.is_measuring = false,
+ 	.distance_measure = -1,
++	.dev_no = 0,
+ };
+ 
+ DEVICE_AND_API_INIT(HCSR0, CONFIG_HCSR0_NAME,
+-				 hcsr_init, &drvdata0,NULL, SECONDARY,
+-				 CONFIG_KERNEL_INIT_PRIORITY_DEFAULT, (void *)&driver_api);
++				 hcsr_init, &drvdata0,NULL, APPLICATION,
++				 /* CONFIG_KERNEL_INIT_PRIORITY_DEFAULT*/56, &driver_api);
++
+ 
+-/*
+ //initialize second device
+ static struct hcsr_driver_data drvdata1 = {
+ 	.is_measuring = false,
+ 	.distance_measure = -1,
++	.dev_no=1,
+ };
+ 
+ DEVICE_AND_API_INIT(HCSR1, CONFIG_HCSR1_NAME,
+-				 hcsr_init, &drvdata1,NULL, SECONDARY,
+-				 CONFIG_KERNEL_INIT_PRIORITY_DEFAULT, (void *)&driver_api);
++				 hcsr_init, &drvdata1,NULL, APPLICATION,
++				 /*CONFIG_KERNEL_INIT_PRIORITY_DEFAULT*/56, &driver_api);
+ 
+-*/
+\ No newline at end of file
+diff --git a/drivers/hcsr04/hcsr_driver.h b/drivers/hcsr04/hcsr_driver.h
+index 73cc772..154fca2 100755
+--- a/drivers/hcsr04/hcsr_driver.h
++++ b/drivers/hcsr04/hcsr_driver.h
+@@ -1,8 +1,8 @@
+ #ifndef __HCSR_DRVR_H__
+ #define __HCSR_DRVR_H__
+ 
+-#include <misc/util.h>
+-#include <device.h>
++//#include <misc/util.h>
++//#include <device.h>
+ #include <gpio.h>
+ 
+ extern int hcsr_init(struct device *dev);
+@@ -29,6 +29,7 @@ struct hcsr_driver_data {
+ 	int64_t timestamp;
+ 	struct k_sem sem_lock;
+ 	struct gpio_callback gpio_cb;
++	int dev_no;//0 for hcsr0 , 1 for hcsr1
+ };
+ 
+ 
+diff --git a/samples/HCSR_app/Makefile b/samples/HCSR_app/Makefile
+new file mode 100644
+index 0000000..bcff330
+--- /dev/null
++++ b/samples/HCSR_app/Makefile
+@@ -0,0 +1,4 @@
++BOARD ?= galileo
++CONF_FILE = prj.conf
++
++include ${ZEPHYR_BASE}/Makefile.inc
+diff --git a/samples/HCSR_app/prj.conf b/samples/HCSR_app/prj.conf
+new file mode 100644
+index 0000000..e69de29
+diff --git a/samples/HCSR_app/src/Makefile b/samples/HCSR_app/src/Makefile
+new file mode 100644
+index 0000000..0194b21
+--- /dev/null
++++ b/samples/HCSR_app/src/Makefile
+@@ -0,0 +1 @@
++obj-y += shellmod.o
+diff --git a/samples/HCSR_app/src/hcsr_driver.h b/samples/HCSR_app/src/hcsr_driver.h
+new file mode 100755
+index 0000000..154fca2
+--- /dev/null
++++ b/samples/HCSR_app/src/hcsr_driver.h
+@@ -0,0 +1,37 @@
++#ifndef __HCSR_DRVR_H__
++#define __HCSR_DRVR_H__
++
++//#include <misc/util.h>
++//#include <device.h>
++#include <gpio.h>
++
++extern int hcsr_init(struct device *dev);
++
++//struct gpio_callback dev1_cb, dev2_cb;
++
++typedef int (*hcsr_reset)(struct device* dev);
++typedef int (*hcsr_read)(struct device* dev, int32_t timeout);
++typedef int (*hcsr_write)(struct device* dev);
++
++struct hcsr_api {
++	hcsr_reset reset;
++	hcsr_read read;
++	hcsr_write write;
++};
++
++
++struct hcsr_driver_data {
++	//is the device currently measuring
++	bool is_measuring;
++	//per device buffer to save last reading
++	int distance_measure;
++	//add start time/end time variables
++	int64_t timestamp;
++	struct k_sem sem_lock;
++	struct gpio_callback gpio_cb;
++	int dev_no;//0 for hcsr0 , 1 for hcsr1
++};
++
++
++
++#endif
+\ No newline at end of file
+diff --git a/samples/HCSR_app/src/shellmod.c b/samples/HCSR_app/src/shellmod.c
+new file mode 100755
+index 0000000..60f0905
+--- /dev/null
++++ b/samples/HCSR_app/src/shellmod.c
+@@ -0,0 +1,151 @@
++#include <zephyr.h>
++#include <misc/printk.h>
++#include <misc/shell.h>
++#include <device.h>
++#include <stdlib.h>
++#include <stdio.h>
++#include <string.h>
++#include <i2c.h>
++#include <stdbool.h>
++#include <gpio.h>
++#include "hcsr_driver.h"
++
++#define SHELL_MODULE_NAME "hcsr"
++#define I2CADDR 0x52
++static int no_of_sensors;
++static bool is_rom_init;
++static int current_addr_loc;
++
++static struct device* eeprom_dev;
++static struct device* hcsr0_dev;
++static struct device* hcsr1_dev;
++struct hcsr_api* api0;
++struct hcsr_api* api1;
++
++static int init_eeprom(void) {
++	union dev_config cfg;
++	int ret;
++
++	//first enable SDA, SCL pins by setting gpio60 to low
++	struct device* gpio = device_get_binding("EXP2");
++	gpio_pin_configure(gpio,12 ,GPIO_DIR_OUT );
++	gpio_pin_write(gpio,12 ,0);
++
++	cfg.raw = 0;
++	eeprom_dev = device_get_binding("I2C0");
++	if(eeprom_dev == NULL) {
++		printk("eeprom device not found.\n");
++		return -1;
++	}
++	ret = i2c_configure(eeprom_dev, cfg.raw);
++	if(ret != 0) {
++		printk("i2c configuration failed.\n");
++		return -1;
++	}
++	is_rom_init=true;
++	return 0;
++}
++
++static int enable(int argc, char *argv[]) {
++	if(argc==2) {
++		no_of_sensors = atoi(argv[1]);
++	} else {
++		printk("Insufficient number of arguments.\n");
++		return -1;
++	}
++	return 0;
++}
++
++static void write_to_eeprom(int pages) {
++	uint32_t* buffer = malloc(sizeof(uint32_t)*pages);
++	int i, ret;
++	for(i=0; i< pages; ++i) {
++		api1->write(hcsr0_dev);
++		k_sleep(1000);
++		buffer[i] = api1->read(hcsr0_dev, 1000);
++	}
++
++	ret = i2c_burst_write(eeprom_dev, I2CADDR, current_addr_loc, buffer, sizeof(buffer));
++	if(ret==-1){
++		printk("burst write failed.\n");
++	}
++	current_addr_loc+=pages;
++}
++
++static int start(int argc, char *argv[]) {
++	int p;
++	if(argc==2) {
++		p = atoi(argv[1]);
++		if(no_of_sensors) {
++			//record p pages
++			//first initialize eeprom, if not done already
++			if(!is_rom_init) {
++				init_eeprom();
++			}
++
++			write_to_eeprom(p);
++		} else {
++			printk("No sensors enabled.\n");
++			return -1;
++		}
++	} else {
++		printk("Insufficient number of arguments.\n");
++		return -1;
++	}
++	return 0;
++}
++
++static void read_from_eeprom(int from, int to) {
++	uint32_t *buffer = malloc(sizeof(int)*(to-from));
++	int i, ret;
++
++	ret = i2c_burst_read(eeprom_dev, I2CADDR, from, buffer, (to-from));
++	if(ret==-1){
++		printk("burst read failed.\n");
++	}
++	printk("Printing %d measures stored in EEPROM from page %d.\n", (to-from), from);
++	for(i=0; i<(to-from); ++i) {
++		printk("%d\n", buffer[i]);
++	}
++}
++
++static int dump(int argc, char *argv[]) {
++	int from, to;
++	if(argc == 3) {
++		from = atoi(argv[1]);
++		to = atoi(argv[2]);
++		if ( from < to) {
++			//dump pages from 'from' to 'to'
++			read_from_eeprom(from, to);
++		} else {
++			printk("Error: First argument must be less than second argument.");
++			return -1;
++		}
++	} else {
++		printk("3. Insufficient number of arguments\n");
++		return -1;
++	}
++	return 0;
++}
++
++
++static struct shell_cmd commands[] = {
++	{"enable", enable, "enable (n) where n = 0(none), 1(hcsr0), 2(hcsr1)"},
++	{"start", start, "start (p) where p<=512 "},
++	{"dump", dump, "dump (p1) (p2) where p1<p2. It will print out values stored between pages p1 and p2"},
++	{NULL,NULL}
++};
++
++int main(void) {
++	int ret;
++	no_of_sensors = 0;
++	is_rom_init = false;
++	current_addr_loc = 0;
++	SHELL_REGISTER(SHELL_MODULE_NAME, commands);
++	shell_register_default_module(SHELL_MODULE_NAME);
++	hcsr0_dev = device_get_binding("HCSR0");
++	hcsr1_dev = device_get_binding("HCSR1");
++
++	api0 = hcsr0_dev->driver_api;
++	api1 = hcsr1_dev->driver_api;
++}
+\ No newline at end of file
+diff --git a/samples/hcsrtest/src/hcsr_driver.h b/samples/hcsrtest/src/hcsr_driver.h
+index 73cc772..154fca2 100755
+--- a/samples/hcsrtest/src/hcsr_driver.h
++++ b/samples/hcsrtest/src/hcsr_driver.h
+@@ -1,8 +1,8 @@
+ #ifndef __HCSR_DRVR_H__
+ #define __HCSR_DRVR_H__
+ 
+-#include <misc/util.h>
+-#include <device.h>
++//#include <misc/util.h>
++//#include <device.h>
+ #include <gpio.h>
+ 
+ extern int hcsr_init(struct device *dev);
+@@ -29,6 +29,7 @@ struct hcsr_driver_data {
+ 	int64_t timestamp;
+ 	struct k_sem sem_lock;
+ 	struct gpio_callback gpio_cb;
++	int dev_no;//0 for hcsr0 , 1 for hcsr1
+ };
+ 
+ 
+diff --git a/samples/hcsrtest/src/test.c b/samples/hcsrtest/src/test.c
+index 34b1201..ae23c3c 100755
+--- a/samples/hcsrtest/src/test.c
++++ b/samples/hcsrtest/src/test.c
+@@ -11,15 +11,50 @@
+ #include "hcsr_driver.h"
+ 
+ void main(void) {
++	printk("start of application.\n");
+ 	struct device* hcsr = device_get_binding("HCSR0");
++	printk("after device get binding.\n");
++
++	if(hcsr == NULL) {
++		printk("somethings wrong here.\n");
++	}
+ 	struct hcsr_api* api = hcsr->driver_api;
+ 	int ret;
+ 
+-	api->reset(hcsr);
++	//api->reset(hcsr);
+ 	api->write(hcsr);
+-	task_sleep(USEC(5000000));
++	k_sleep(SECONDS(5));
+ 	ret = api->read(hcsr, 1000);
+ 	if(ret==-1) {
+ 		printk("read failed.\n");
+ 	}
++
++
++	// 	//struct device *gpio_cw = device_get_binding("GPIO_CW");
++	// int cnt=0;
++	// struct device *gpio_rw = device_get_binding("GPIO_RW");
++	// struct device *gpio_0 = device_get_binding("GPIO_0");
++	// //struct device *exp0 = device_get_binding("EXP0");
++	// struct device *exp1 = device_get_binding("EXP1");
++	// ///struct device *exp2 = device_get_binding("EXP2");
++	// struct device *pwm0 = device_get_binding("PWM0");
++
++	// if(gpio_rw == NULL || gpio_0 == NULL || exp1 == NULL || pwm0 == NULL) {
++	// 	printk("Failed to get device binding.\n");
++	// 	return;
++	// }
++
++	// //setup trigger pin for hcsr0 (IO2 - gpio13)
++	// gpio_pin_write(pwm0, 13, 0);//gpio 77 low
++	// gpio_pin_write(exp1, 2, 0);//gpio 34 low
++	
++	// gpio_pin_configure(gpio_0,5, GPIO_DIR_OUT);
++
++	// while (1) {
++	// 	/* Set pin to HIGH/LOW every 1 second */
++	// 	gpio_pin_write(gpio_0, 5, cnt % 2);
++	// 	cnt++;
++	// 	k_sleep(1000);
++	// }
++
+ }
+\ No newline at end of file
+-- 
+1.9.1
+

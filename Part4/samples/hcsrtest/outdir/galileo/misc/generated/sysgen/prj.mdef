@@ -1,0 +1,13 @@
+% WARNING. THIS FILE IS AUTO-GENERATED. DO NOT MODIFY!
+
+% CONFIG NUM_COMMAND_PACKETS NUM_TIMER_PACKETS NUM_TASK_PRIORITIES
+% =============================================================
+  CONFIG 0             0               15
+
+% TASKGROUP NAME
+% ==============
+  TASKGROUP EXE
+  TASKGROUP SYS
+  TASKGROUP FPU_LEGACY
+  TASKGROUP SSE
+

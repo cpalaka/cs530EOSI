@@ -1,0 +1,15 @@
+-nostartfiles -nodefaultlibs -nostdlib -static -Wl,-X -Wl,-N -Wl,--gc-sections -Wl,--build-id=none
+-Wl,-Map=zephyr.map
+-L ./include/generated
+-u _OffsetAbsSyms -u _ConfigAbsSyms
+-e __start
+-Wl,--start-group
+-Wl,--whole-archive
+
+ src/built-in.o
+libzephyr.a
+-Wl,--no-whole-archive
+kernel/unified/lib.a
+./arch/x86/core/offsets/offsets.o
+-Wl,--end-group
+ -L /opt/zephyr-sdk/sysroots/i586-poky-elf/usr/lib/i586-poky-elf/5.2.0 -L /opt/zephyr-sdk/sysroots/i586-poky-elf/usr/lib/.  -lgcc

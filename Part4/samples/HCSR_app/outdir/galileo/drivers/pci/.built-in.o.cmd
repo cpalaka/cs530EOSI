@@ -1,0 +1,1 @@
+cmd_drivers/pci/built-in.o :=  /opt/zephyr-sdk/sysroots/i686-pokysdk-linux/usr/bin/i586-poky-elf/i586-poky-elf-ld -nostartfiles -nodefaultlibs -nostdlib -static   -r -o drivers/pci/built-in.o drivers/pci/pci.o drivers/pci/pci_config.o drivers/pci/pci_interface.o drivers/pci/pci_legacy_bridge.o 

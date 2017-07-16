@@ -1,0 +1,1710 @@
+Archive member included to satisfy reference by file (symbol)
+
+drivers/built-in.o            (--whole-archive)
+kernel/unified/built-in.o     (--whole-archive)
+lib/built-in.o                (--whole-archive)
+misc/built-in.o               (--whole-archive)
+boards/built-in.o             (--whole-archive)
+ext/built-in.o                (--whole-archive)
+arch/built-in.o               (--whole-archive)
+kernel/unified/lib.a(device.o)
+                              src/built-in.o (device_get_binding)
+kernel/unified/lib.a(errno.o)
+                              arch/built-in.o (_k_neg_eagain)
+kernel/unified/lib.a(init.o)  arch/built-in.o (_Cstart)
+kernel/unified/lib.a(legacy_timer.o)
+                              drivers/built-in.o (nano_timer_test)
+kernel/unified/lib.a(sched.o)
+                              arch/built-in.o (_kernel)
+kernel/unified/lib.a(sem.o)   drivers/built-in.o (k_sem_init)
+kernel/unified/lib.a(sys_clock.o)
+                              drivers/built-in.o (_nano_sys_clock_tick_announce)
+kernel/unified/lib.a(thread.o)
+                              arch/built-in.o (k_is_in_isr)
+kernel/unified/lib.a(thread_abort.o)
+                              arch/built-in.o (k_thread_abort)
+kernel/unified/lib.a(timer.o)
+                              drivers/built-in.o (k_timer_init)
+kernel/unified/lib.a(idle.o)  kernel/unified/lib.a(init.o) (idle)
+/opt/zephyr-sdk/sysroots/i586-poky-elf/usr/lib/i586-poky-elf/5.2.0/libgcc.a(_divdi3.o)
+                              kernel/unified/lib.a(sched.o) (__divdi3)
+/opt/zephyr-sdk/sysroots/i586-poky-elf/usr/lib/i586-poky-elf/5.2.0/libgcc.a(_udivdi3.o)
+                              drivers/built-in.o (__udivdi3)
+
+Allocating common symbols
+Common symbol       size              file
+
+shared_irq_0_runtime
+                    0x3c              drivers/built-in.o
+_trace_list_k_timer
+                    0x4               kernel/unified/lib.a(timer.o)
+_dummy_exception_vector_stub
+                    0x4               arch/built-in.o
+_time_slice_elapsed
+                    0x4               kernel/unified/lib.a(sys_clock.o)
+_trace_list_k_sem   0x4               kernel/unified/lib.a(sem.o)
+api1                0x4               src/built-in.o
+_sys_clock_tick_count
+                    0x8               kernel/unified/lib.a(sys_clock.o)
+api0                0x4               src/built-in.o
+sys_cache_line_size
+                    0x4               arch/built-in.o
+_dummy_spurious_interrupt
+                    0x4               arch/built-in.o
+pci_cap_hdr_t       0x4               drivers/built-in.o
+
+Discarded input sections
+
+ .text          0x0000000000000000        0x0 src/built-in.o
+ .text.__k_mem_pool_quad_block_size_define
+                0x0000000000000000        0x5 src/built-in.o
+ .data          0x0000000000000000        0x0 src/built-in.o
+ .bss           0x0000000000000000        0x0 src/built-in.o
+ .text          0x0000000000000000        0x0 drivers/built-in.o
+ .text.__k_mem_pool_quad_block_size_define
+                0x0000000000000000       0x5f drivers/built-in.o
+ .text.k_cycle_get_32
+                0x0000000000000000       0x10 drivers/built-in.o
+ .text._ioapic_int_vec_set
+                0x0000000000000000       0x14 drivers/built-in.o
+ .text.pci_enable_bus_master
+                0x0000000000000000       0x11 drivers/built-in.o
+ .text.pci_config_out_long
+                0x0000000000000000       0x3f drivers/built-in.o
+ .text.pci_config_out_word
+                0x0000000000000000       0x49 drivers/built-in.o
+ .text.pci_config_out_byte
+                0x0000000000000000       0x4c drivers/built-in.o
+ .text.pci_config_in_long
+                0x0000000000000000       0x3f drivers/built-in.o
+ .text.pci_config_in_word
+                0x0000000000000000       0x52 drivers/built-in.o
+ .text.pci_config_in_byte
+                0x0000000000000000       0x54 drivers/built-in.o
+ .text.pci_config_ext_cap_ptr_find
+                0x0000000000000000       0xa6 drivers/built-in.o
+ .data          0x0000000000000000        0x0 drivers/built-in.o
+ .bss           0x0000000000000000        0x0 drivers/built-in.o
+ .text          0x0000000000000000        0x0 kernel/unified/built-in.o
+ .text.sys_kernel_version_get
+                0x0000000000000000        0xa kernel/unified/built-in.o
+ .data          0x0000000000000000        0x0 kernel/unified/built-in.o
+ .bss           0x0000000000000000        0x0 kernel/unified/built-in.o
+ .comment       0x0000000000000000       0x12 kernel/unified/built-in.o
+ .debug_aranges
+                0x0000000000000000       0x20 kernel/unified/built-in.o
+ .debug_info    0x0000000000000000       0x8e kernel/unified/built-in.o
+ .debug_abbrev  0x0000000000000000       0x65 kernel/unified/built-in.o
+ .debug_line    0x0000000000000000       0xaa kernel/unified/built-in.o
+ .debug_frame   0x0000000000000000       0x34 kernel/unified/built-in.o
+ .debug_str     0x0000000000000000      0x1dc kernel/unified/built-in.o
+ .debug_ranges  0x0000000000000000       0x10 kernel/unified/built-in.o
+ .text          0x0000000000000000        0x0 lib/built-in.o
+ .text.fprintf  0x0000000000000000       0x1c lib/built-in.o
+ .text.vfprintf
+                0x0000000000000000       0x1b lib/built-in.o
+ .text.printf   0x0000000000000000       0x1b lib/built-in.o
+ .text.vprintf  0x0000000000000000       0x1a lib/built-in.o
+ .text._to_x    0x0000000000000000       0x5b lib/built-in.o
+ .text._rlrshift
+                0x0000000000000000       0x26 lib/built-in.o
+ .text._ldiv5   0x0000000000000000       0x94 lib/built-in.o
+ .text._get_digit
+                0x0000000000000000       0x45 lib/built-in.o
+ .text._prf     0x0000000000000000      0xc58 lib/built-in.o
+ .text.sprintf_out
+                0x0000000000000000       0x1c lib/built-in.o
+ .text.snprintf
+                0x0000000000000000       0x43 lib/built-in.o
+ .text.sprintf  0x0000000000000000       0x33 lib/built-in.o
+ .text.vsnprintf
+                0x0000000000000000       0x42 lib/built-in.o
+ .text.vsprintf
+                0x0000000000000000       0x32 lib/built-in.o
+ .text._stdout_hook_default
+                0x0000000000000000        0x8 lib/built-in.o
+ .text.__stdout_hook_install
+                0x0000000000000000        0xd lib/built-in.o
+ .text.fputc    0x0000000000000000       0x15 lib/built-in.o
+ .text.fputs    0x0000000000000000       0x2c lib/built-in.o
+ .text.fwrite   0x0000000000000000       0x4b lib/built-in.o
+ .text.puts     0x0000000000000000       0x28 lib/built-in.o
+ .text.strcpy   0x0000000000000000       0x1e lib/built-in.o
+ .text.strncpy  0x0000000000000000       0x30 lib/built-in.o
+ .text.strchr   0x0000000000000000       0x24 lib/built-in.o
+ .text.strrchr  0x0000000000000000       0x18 lib/built-in.o
+ .text.strlen   0x0000000000000000       0x13 lib/built-in.o
+ .text.strncmp  0x0000000000000000       0x2b lib/built-in.o
+ .text.strcat   0x0000000000000000       0x22 lib/built-in.o
+ .text.strncat  0x0000000000000000       0x33 lib/built-in.o
+ .text.memcmp   0x0000000000000000       0x32 lib/built-in.o
+ .text.memmove  0x0000000000000000       0x38 lib/built-in.o
+ .text.memcpy   0x0000000000000000       0x6d lib/built-in.o
+ .text.memchr   0x0000000000000000       0x2c lib/built-in.o
+ .rodata.str1.1
+                0x0000000000000000        0xb lib/built-in.o
+ .rodata.shifts.1161
+                0x0000000000000000        0x3 lib/built-in.o
+ .data          0x0000000000000000        0x0 lib/built-in.o
+ .data._stdout_hook
+                0x0000000000000000        0x4 lib/built-in.o
+ .bss           0x0000000000000000        0x0 lib/built-in.o
+ .text          0x0000000000000000        0x0 misc/built-in.o
+ .text.syslog_hook_default
+                0x0000000000000000        0x5 misc/built-in.o
+ .text.syslog_hook_install
+                0x0000000000000000        0xd misc/built-in.o
+ .text.__k_mem_pool_quad_block_size_define
+                0x0000000000000000        0x5 misc/built-in.o
+ .data          0x0000000000000000        0x0 misc/built-in.o
+ .data.syslog_hook
+                0x0000000000000000        0x4 misc/built-in.o
+ .bss           0x0000000000000000        0x0 misc/built-in.o
+ .bss._k_mem_pool_count
+                0x0000000000000000        0x4 misc/built-in.o
+ .text          0x0000000000000000        0x0 boards/built-in.o
+ .text.__k_mem_pool_quad_block_size_define
+                0x0000000000000000        0x5 boards/built-in.o
+ .text._galileo_pinmux_get_pin
+                0x0000000000000000       0x1c boards/built-in.o
+ .data          0x0000000000000000        0x0 boards/built-in.o
+ .bss           0x0000000000000000        0x0 boards/built-in.o
+ .text          0x0000000000000000        0x0 arch/built-in.o
+ .text.__k_mem_pool_quad_block_size_define
+                0x0000000000000000       0x28 arch/built-in.o
+ .text.nano_cpu_atomic_idle
+                0x0000000000000000       0x11 arch/built-in.o
+ .text._MsrWrite
+                0x0000000000000000       0x10 arch/built-in.o
+ .text._MsrRead
+                0x0000000000000000       0x10 arch/built-in.o
+ .text.sys_cache_flush
+                0x0000000000000000        0x3 arch/built-in.o
+ .data          0x0000000000000000        0x0 arch/built-in.o
+ .bss           0x0000000000000000        0x0 arch/built-in.o
+ .text          0x0000000000000000        0x0 kernel/unified/lib.a(device.o)
+ .data          0x0000000000000000        0x0 kernel/unified/lib.a(device.o)
+ .bss           0x0000000000000000        0x0 kernel/unified/lib.a(device.o)
+ .text.__k_mem_pool_quad_block_size_define
+                0x0000000000000000        0x5 kernel/unified/lib.a(device.o)
+ .text          0x0000000000000000        0x0 kernel/unified/lib.a(errno.o)
+ .data          0x0000000000000000        0x0 kernel/unified/lib.a(errno.o)
+ .bss           0x0000000000000000        0x0 kernel/unified/lib.a(errno.o)
+ .text.__k_mem_pool_quad_block_size_define
+                0x0000000000000000        0x5 kernel/unified/lib.a(errno.o)
+ .text._get_errno
+                0x0000000000000000        0xd kernel/unified/lib.a(errno.o)
+ .text          0x0000000000000000        0x0 kernel/unified/lib.a(init.o)
+ .data          0x0000000000000000        0x0 kernel/unified/lib.a(init.o)
+ .bss           0x0000000000000000        0x0 kernel/unified/lib.a(init.o)
+ .text.__k_mem_pool_quad_block_size_define
+                0x0000000000000000        0x5 kernel/unified/lib.a(init.o)
+ .text._bss_zero
+                0x0000000000000000       0x1c kernel/unified/lib.a(init.o)
+ .text.main     0x0000000000000000        0x5 kernel/unified/lib.a(init.o)
+ .rodata._idle_thread
+                0x0000000000000000        0x4 kernel/unified/lib.a(init.o)
+ .rodata._main_thread
+                0x0000000000000000        0x4 kernel/unified/lib.a(init.o)
+ .text          0x0000000000000000        0x0 kernel/unified/lib.a(legacy_timer.o)
+ .data          0x0000000000000000        0x0 kernel/unified/lib.a(legacy_timer.o)
+ .bss           0x0000000000000000        0x0 kernel/unified/lib.a(legacy_timer.o)
+ .text.__k_mem_pool_quad_block_size_define
+                0x0000000000000000        0x5 kernel/unified/lib.a(legacy_timer.o)
+ .text._legacy_sleep
+                0x0000000000000000       0xb1 kernel/unified/lib.a(legacy_timer.o)
+ .text          0x0000000000000000        0x0 kernel/unified/lib.a(sched.o)
+ .data          0x0000000000000000        0x0 kernel/unified/lib.a(sched.o)
+ .bss           0x0000000000000000        0x0 kernel/unified/lib.a(sched.o)
+ .text.__k_mem_pool_quad_block_size_define
+                0x0000000000000000        0x5 kernel/unified/lib.a(sched.o)
+ .text.k_sched_lock
+                0x0000000000000000        0xe kernel/unified/lib.a(sched.o)
+ .text.k_thread_priority_get
+                0x0000000000000000        0xb kernel/unified/lib.a(sched.o)
+ .text.k_thread_priority_set
+                0x0000000000000000       0x44 kernel/unified/lib.a(sched.o)
+ .text.k_yield  0x0000000000000000       0x36 kernel/unified/lib.a(sched.o)
+ .text.k_sleep  0x0000000000000000       0x86 kernel/unified/lib.a(sched.o)
+ .text.k_wakeup
+                0x0000000000000000       0x7c kernel/unified/lib.a(sched.o)
+ .text._dump_ready_q
+                0x0000000000000000        0x5 kernel/unified/lib.a(sched.o)
+ .text.k_sched_time_slice_set
+                0x0000000000000000       0x1f kernel/unified/lib.a(sched.o)
+ .text.k_is_preempt_thread
+                0x0000000000000000       0x29 kernel/unified/lib.a(sched.o)
+ .text          0x0000000000000000        0x0 kernel/unified/lib.a(sem.o)
+ .data          0x0000000000000000        0x0 kernel/unified/lib.a(sem.o)
+ .bss           0x0000000000000000        0x0 kernel/unified/lib.a(sem.o)
+ .text.__k_mem_pool_quad_block_size_define
+                0x0000000000000000        0x5 kernel/unified/lib.a(sem.o)
+ .text.k_sem_group_take
+                0x0000000000000000      0x157 kernel/unified/lib.a(sem.o)
+ .text._sem_give_non_preemptible
+                0x0000000000000000       0x43 kernel/unified/lib.a(sem.o)
+ .text.k_sem_group_give
+                0x0000000000000000       0x41 kernel/unified/lib.a(sem.o)
+ .text.k_sem_group_reset
+                0x0000000000000000       0x24 kernel/unified/lib.a(sem.o)
+ COMMON         0x0000000000000000        0x4 kernel/unified/lib.a(sem.o)
+ .text          0x0000000000000000        0x0 kernel/unified/lib.a(sys_clock.o)
+ .data          0x0000000000000000        0x0 kernel/unified/lib.a(sys_clock.o)
+ .bss           0x0000000000000000        0x0 kernel/unified/lib.a(sys_clock.o)
+ .text.__k_mem_pool_quad_block_size_define
+                0x0000000000000000        0x5 kernel/unified/lib.a(sys_clock.o)
+ .text._tick_get_32
+                0x0000000000000000        0xa kernel/unified/lib.a(sys_clock.o)
+ .text.k_uptime_get_32
+                0x0000000000000000       0x20 kernel/unified/lib.a(sys_clock.o)
+ .text._tick_get
+                0x0000000000000000       0x1b kernel/unified/lib.a(sys_clock.o)
+ .text.k_uptime_get
+                0x0000000000000000       0x30 kernel/unified/lib.a(sys_clock.o)
+ .text.sys_tick_delta
+                0x0000000000000000       0x33 kernel/unified/lib.a(sys_clock.o)
+ .text.sys_tick_delta_32
+                0x0000000000000000       0x2a kernel/unified/lib.a(sys_clock.o)
+ .text.k_uptime_delta
+                0x0000000000000000       0x29 kernel/unified/lib.a(sys_clock.o)
+ .text.k_uptime_delta_32
+                0x0000000000000000        0xe kernel/unified/lib.a(sys_clock.o)
+ .text          0x0000000000000000        0x0 kernel/unified/lib.a(thread.o)
+ .data          0x0000000000000000        0x0 kernel/unified/lib.a(thread.o)
+ .bss           0x0000000000000000        0x0 kernel/unified/lib.a(thread.o)
+ .text.__k_mem_pool_quad_block_size_define
+                0x0000000000000000        0x5 kernel/unified/lib.a(thread.o)
+ .text.sys_execution_context_type_get
+                0x0000000000000000       0x1e kernel/unified/lib.a(thread.o)
+ .text._thread_essential_set
+                0x0000000000000000       0x11 kernel/unified/lib.a(thread.o)
+ .text._thread_essential_clear
+                0x0000000000000000       0x11 kernel/unified/lib.a(thread.o)
+ .text.k_busy_wait
+                0x0000000000000000       0x49 kernel/unified/lib.a(thread.o)
+ .text.k_thread_cancel
+                0x0000000000000000       0x30 kernel/unified/lib.a(thread.o)
+ .text._k_thread_single_suspend
+                0x0000000000000000       0x25 kernel/unified/lib.a(thread.o)
+ .text.k_thread_suspend
+                0x0000000000000000       0x35 kernel/unified/lib.a(thread.o)
+ .text._k_thread_single_resume
+                0x0000000000000000       0x23 kernel/unified/lib.a(thread.o)
+ .text.k_thread_resume
+                0x0000000000000000       0x1d kernel/unified/lib.a(thread.o)
+ .text._k_thread_group_mask_get
+                0x0000000000000000        0xe kernel/unified/lib.a(thread.o)
+ .text._k_thread_group_join
+                0x0000000000000000       0x11 kernel/unified/lib.a(thread.o)
+ .text._k_thread_group_leave
+                0x0000000000000000       0x11 kernel/unified/lib.a(thread.o)
+ .text.task_start
+                0x0000000000000000       0x1d kernel/unified/lib.a(thread.o)
+ .text          0x0000000000000000        0x0 kernel/unified/lib.a(thread_abort.o)
+ .data          0x0000000000000000        0x0 kernel/unified/lib.a(thread_abort.o)
+ .bss           0x0000000000000000        0x0 kernel/unified/lib.a(thread_abort.o)
+ .text.__k_mem_pool_quad_block_size_define
+                0x0000000000000000        0x5 kernel/unified/lib.a(thread_abort.o)
+ .text.task_abort_handler_set
+                0x0000000000000000       0x10 kernel/unified/lib.a(thread_abort.o)
+ .text          0x0000000000000000        0x0 kernel/unified/lib.a(timer.o)
+ .data          0x0000000000000000        0x0 kernel/unified/lib.a(timer.o)
+ .bss           0x0000000000000000        0x0 kernel/unified/lib.a(timer.o)
+ .text.__k_mem_pool_quad_block_size_define
+                0x0000000000000000        0x5 kernel/unified/lib.a(timer.o)
+ .text.k_timer_stop
+                0x0000000000000000       0x66 kernel/unified/lib.a(timer.o)
+ .text.k_timer_remaining_get
+                0x0000000000000000       0x72 kernel/unified/lib.a(timer.o)
+ COMMON         0x0000000000000000        0x4 kernel/unified/lib.a(timer.o)
+ .text          0x0000000000000000        0x0 kernel/unified/lib.a(idle.o)
+ .data          0x0000000000000000        0x0 kernel/unified/lib.a(idle.o)
+ .bss           0x0000000000000000        0x0 kernel/unified/lib.a(idle.o)
+ .text.__k_mem_pool_quad_block_size_define
+                0x0000000000000000        0x5 kernel/unified/lib.a(idle.o)
+ .text._sys_power_save_idle_exit
+                0x0000000000000000        0x5 kernel/unified/lib.a(idle.o)
+ .text          0x0000000000000000        0x0 ./arch/x86/core/offsets/offsets.o
+ .data          0x0000000000000000        0x0 ./arch/x86/core/offsets/offsets.o
+ .bss           0x0000000000000000        0x0 ./arch/x86/core/offsets/offsets.o
+ .text.__k_mem_pool_quad_block_size_define
+                0x0000000000000000        0x5 ./arch/x86/core/offsets/offsets.o
+ .data          0x0000000000000000        0x0 /opt/zephyr-sdk/sysroots/i586-poky-elf/usr/lib/i586-poky-elf/5.2.0/libgcc.a(_divdi3.o)
+ .bss           0x0000000000000000        0x0 /opt/zephyr-sdk/sysroots/i586-poky-elf/usr/lib/i586-poky-elf/5.2.0/libgcc.a(_divdi3.o)
+ .text.unlikely
+                0x0000000000000000        0x0 /opt/zephyr-sdk/sysroots/i586-poky-elf/usr/lib/i586-poky-elf/5.2.0/libgcc.a(_divdi3.o)
+ .eh_frame      0x0000000000000000       0x58 /opt/zephyr-sdk/sysroots/i586-poky-elf/usr/lib/i586-poky-elf/5.2.0/libgcc.a(_divdi3.o)
+ .data          0x0000000000000000        0x0 /opt/zephyr-sdk/sysroots/i586-poky-elf/usr/lib/i586-poky-elf/5.2.0/libgcc.a(_udivdi3.o)
+ .bss           0x0000000000000000        0x0 /opt/zephyr-sdk/sysroots/i586-poky-elf/usr/lib/i586-poky-elf/5.2.0/libgcc.a(_udivdi3.o)
+ .text.unlikely
+                0x0000000000000000        0x0 /opt/zephyr-sdk/sysroots/i586-poky-elf/usr/lib/i586-poky-elf/5.2.0/libgcc.a(_udivdi3.o)
+ .eh_frame      0x0000000000000000       0x9c /opt/zephyr-sdk/sysroots/i586-poky-elf/usr/lib/i586-poky-elf/5.2.0/libgcc.a(_udivdi3.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+RAM              0x0000000000100000 0x0000000002000000 xw
+IDT_LIST         0x0000000000000800 0x0000000000000800
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+START GROUP
+LOAD src/built-in.o
+LOAD libzephyr.a
+LOAD kernel/unified/lib.a
+LOAD ./arch/x86/core/offsets/offsets.o
+END GROUP
+LOAD /opt/zephyr-sdk/sysroots/i586-poky-elf/usr/lib/i586-poky-elf/5.2.0/libgcc.a
+LOAD staticIdt.o
+LOAD irq_int_vector_map.o
+                0x0000000000100000                _image_rom_start = 0x100000
+                0x0000000000100000                _image_text_start = 0x100000
+
+text            0x0000000000100000     0x463c
+                0x0000000000000000                . = 0x0
+ *(.text_start)
+ *(.text_start.*)
+ .text_start.__start
+                0x0000000000100000       0x88 arch/built-in.o
+                0x0000000000100000                __start
+                0x0000000000100057                _Idt
+                0x0000000000100070                _gdt
+ *(.text)
+ *fill*         0x0000000000100088        0x8 
+ .text          0x0000000000100090      0x1aa /opt/zephyr-sdk/sysroots/i586-poky-elf/usr/lib/i586-poky-elf/5.2.0/libgcc.a(_divdi3.o)
+                0x0000000000100090                __divdi3
+ *fill*         0x000000000010023a        0x6 
+ .text          0x0000000000100240      0x129 /opt/zephyr-sdk/sysroots/i586-poky-elf/usr/lib/i586-poky-elf/5.2.0/libgcc.a(_udivdi3.o)
+                0x0000000000100240                __udivdi3
+ *(.text.*)
+ .text.main     0x0000000000100369       0x38 src/built-in.o
+                0x0000000000100369                main
+ .text.console_out
+                0x00000000001003a1       0x35 drivers/built-in.o
+ .text.uart_console_hook_install
+                0x00000000001003d6       0x10 drivers/built-in.o
+                0x00000000001003d6                uart_console_hook_install
+ .text.uart_console_init
+                0x00000000001003e6       0x1c drivers/built-in.o
+ .text.uart_ns16550_poll_in
+                0x0000000000100402       0x28 drivers/built-in.o
+ .text.uart_ns16550_poll_out
+                0x000000000010042a       0x1f drivers/built-in.o
+ .text.uart_ns16550_err_check
+                0x0000000000100449       0x15 drivers/built-in.o
+ .text.uart_ns16550_init
+                0x000000000010045e       0xf7 drivers/built-in.o
+ .text._timer_int_handler
+                0x0000000000100555       0x1b drivers/built-in.o
+                0x0000000000100555                _timer_int_handler
+ .text._sys_clock_driver_init
+                0x0000000000100570      0x13e drivers/built-in.o
+                0x0000000000100570                _sys_clock_driver_init
+ .text.irqstubs
+                0x00000000001006ae       0x2a drivers/built-in.o
+                0x00000000001006ae                _timer_int_handler_irq20_stub
+                0x00000000001006ba                shared_irq_isr_irq18_stub
+                0x00000000001006c9                spi_intel_isr_irq16_stub
+ .text._loapic_init
+                0x00000000001006d8       0xaf drivers/built-in.o
+ .text._loapic_int_vec_set
+                0x0000000000100787       0x22 drivers/built-in.o
+                0x0000000000100787                _loapic_int_vec_set
+ .text._loapic_irq_enable
+                0x00000000001007a9       0x23 drivers/built-in.o
+                0x00000000001007a9                _loapic_irq_enable
+ .text._loapic_irq_disable
+                0x00000000001007cc       0x23 drivers/built-in.o
+                0x00000000001007cc                _loapic_irq_disable
+ .text.__irq_controller_isr_vector_get
+                0x00000000001007ef       0x2f drivers/built-in.o
+                0x00000000001007ef                __irq_controller_isr_vector_get
+ .text.__irq_controller_irq_config
+                0x000000000010081e       0x26 drivers/built-in.o
+                0x000000000010081e                __irq_controller_irq_config
+ .text._arch_irq_enable
+                0x0000000000100844       0x1d drivers/built-in.o
+                0x0000000000100844                _arch_irq_enable
+ .text._arch_irq_disable
+                0x0000000000100861       0x1d drivers/built-in.o
+                0x0000000000100861                _arch_irq_disable
+ .text.__IoApicSet
+                0x000000000010087e       0x19 drivers/built-in.o
+ .text._IoApicRedUpdateLo
+                0x0000000000100897       0x2e drivers/built-in.o
+ .text._ioapic_init
+                0x00000000001008c5       0x2d drivers/built-in.o
+                0x00000000001008c5                _ioapic_init
+ .text._ioapic_irq_enable
+                0x00000000001008f2       0x13 drivers/built-in.o
+                0x00000000001008f2                _ioapic_irq_enable
+ .text._ioapic_irq_disable
+                0x0000000000100905       0x16 drivers/built-in.o
+                0x0000000000100905                _ioapic_irq_disable
+ .text._ioapic_irq_set
+                0x000000000010091b       0x2e drivers/built-in.o
+                0x000000000010091b                _ioapic_irq_set
+ .text.pci_set_command_bits
+                0x0000000000100949       0x57 drivers/built-in.o
+ .text.pci_bus_scan_init
+                0x00000000001009a0       0x6e drivers/built-in.o
+                0x00000000001009a0                pci_bus_scan_init
+ .text.pci_bus_scan
+                0x0000000000100a0e      0x5d1 drivers/built-in.o
+                0x0000000000100a0e                pci_bus_scan
+ .text.pci_enable_regs
+                0x0000000000100fdf       0x11 drivers/built-in.o
+                0x0000000000100fdf                pci_enable_regs
+ .text.pci_read
+                0x0000000000100ff0       0x70 drivers/built-in.o
+                0x0000000000100ff0                pci_read
+ .text.pci_write
+                0x0000000000101060       0x6a drivers/built-in.o
+                0x0000000000101060                pci_write
+ .text.pci_header_get
+                0x00000000001010ca       0x4e drivers/built-in.o
+                0x00000000001010ca                pci_header_get
+ .text.pci_legacy_bridge_detect
+                0x0000000000101118      0x137 drivers/built-in.o
+                0x0000000000101118                pci_legacy_bridge_detect
+ .text.pci_legacy_bridge_configure
+                0x000000000010124f       0x47 drivers/built-in.o
+                0x000000000010124f                pci_legacy_bridge_configure
+ .text.isr_register
+                0x0000000000101296       0x3d drivers/built-in.o
+ .text.shared_irq_isr
+                0x00000000001012d3       0x31 drivers/built-in.o
+                0x00000000001012d3                shared_irq_isr
+ .text.shared_irq_initialize
+                0x0000000000101304       0x19 drivers/built-in.o
+                0x0000000000101304                shared_irq_initialize
+ .text.disable  0x000000000010131d       0x5c drivers/built-in.o
+ .text.enable   0x0000000000101379       0x49 drivers/built-in.o
+ .text.shared_irq_config_0_irq
+                0x00000000001013c2       0x1c drivers/built-in.o
+                0x00000000001013c2                shared_irq_config_0_irq
+ .text.spi_intel_configure
+                0x00000000001013de       0xa2 drivers/built-in.o
+ .text.spi_config_0_irq
+                0x0000000000101480       0x19 drivers/built-in.o
+                0x0000000000101480                spi_config_0_irq
+ .text.spi_intel_init
+                0x0000000000101499       0xcc drivers/built-in.o
+                0x0000000000101499                spi_intel_init
+ .text._spi_control_cs
+                0x0000000000101565       0x30 drivers/built-in.o
+ .text.spi_intel_isr
+                0x0000000000101595       0xfb drivers/built-in.o
+                0x0000000000101595                spi_intel_isr
+ .text.spi_intel_transceive
+                0x0000000000101690       0xa1 drivers/built-in.o
+ .text.dw_set_bit
+                0x0000000000101731       0x16 drivers/built-in.o
+ .text.gpio_dw_write
+                0x0000000000101747       0x2b drivers/built-in.o
+ .text.gpio_dw_read
+                0x0000000000101772       0x4f drivers/built-in.o
+ .text.gpio_dw_manage_callback
+                0x00000000001017c1       0x5e drivers/built-in.o
+ .text.gpio_dw_enable_callback
+                0x000000000010181f       0x4b drivers/built-in.o
+ .text.gpio_dw_disable_callback
+                0x000000000010186a       0x3c drivers/built-in.o
+ .text.gpio_dw_isr
+                0x00000000001018a6       0x3c drivers/built-in.o
+ .text.dw_pin_config
+                0x00000000001018e2      0x120 drivers/built-in.o
+ .text.gpio_dw_config
+                0x0000000000101a02       0x4d drivers/built-in.o
+ .text.gpio_dw_initialize
+                0x0000000000101a4f       0x7f drivers/built-in.o
+ .text.gpio_config_0_irq
+                0x0000000000101ace       0x39 drivers/built-in.o
+ .text.gpio_pcal9535a_manage_callback
+                0x0000000000101b07        0xa drivers/built-in.o
+ .text.gpio_pcal9535a_disable_callback
+                0x0000000000101b11        0xa drivers/built-in.o
+ .text.gpio_pcal9535a_read
+                0x0000000000101b1b       0x90 drivers/built-in.o
+ .text.gpio_pcal9535a_init
+                0x0000000000101bab       0x4c drivers/built-in.o
+ .text._write_port_regs
+                0x0000000000101bf7       0x50 drivers/built-in.o
+ .text.gpio_pcal9535a_config
+                0x0000000000101c47      0x19a drivers/built-in.o
+ .text.gpio_pcal9535a_write
+                0x0000000000101de1       0x74 drivers/built-in.o
+ .text.gpio_pcal9535a_enable_callback
+                0x0000000000101e55        0xa drivers/built-in.o
+ .text.gpio_sch_read
+                0x0000000000101e5f       0x3f drivers/built-in.o
+ .text.gpio_sch_init
+                0x0000000000101e9e       0x26 drivers/built-in.o
+ .text._gpio_sch_manage_callback
+                0x0000000000101ec4       0x52 drivers/built-in.o
+ .text.gpio_sch_manage_callback
+                0x0000000000101f16       0x80 drivers/built-in.o
+ .text._set_bit
+                0x0000000000101f96       0x21 drivers/built-in.o
+ .text.gpio_sch_write
+                0x0000000000101fb7       0x41 drivers/built-in.o
+ .text.gpio_sch_enable_callback
+                0x0000000000101ff8       0xaa drivers/built-in.o
+ .text._gpio_sch_poll_status
+                0x00000000001020a2       0x88 drivers/built-in.o
+ .text._gpio_pin_config
+                0x000000000010212a       0x8e drivers/built-in.o
+ .text.gpio_sch_config
+                0x00000000001021b8       0x50 drivers/built-in.o
+ .text.gpio_sch_disable_callback
+                0x0000000000102208       0x79 drivers/built-in.o
+ .text.i2c_dw_runtime_configure
+                0x0000000000102281       0xfe drivers/built-in.o
+ .text.i2c_dw_transfer
+                0x000000000010237f      0x215 drivers/built-in.o
+ .text._i2c_dw_data_read.isra.1
+                0x0000000000102594       0x46 drivers/built-in.o
+ .text._i2c_dw_data_send.isra.2
+                0x00000000001025da       0x75 drivers/built-in.o
+ .text.i2c_dw_isr
+                0x000000000010264f      0x186 drivers/built-in.o
+ .text.i2c_dw_initialize
+                0x00000000001027d5       0x94 drivers/built-in.o
+ .text.i2c_config_0
+                0x0000000000102869       0x39 drivers/built-in.o
+ .text.pwm_pca9685_configure
+                0x00000000001028a2        0x7 drivers/built-in.o
+ .text.pwm_pca9685_set_values
+                0x00000000001028a9       0xd5 drivers/built-in.o
+ .text.pwm_pca9685_set_duty_cycle
+                0x000000000010297e       0x43 drivers/built-in.o
+ .text.pwm_pca9685_init
+                0x00000000001029c1       0x77 drivers/built-in.o
+                0x00000000001029c1                pwm_pca9685_init
+ .text.ti_adc108s102_disable
+                0x0000000000102a38        0x5 drivers/built-in.o
+ .text.ti_adc108s102_init
+                0x0000000000102a3d       0x34 drivers/built-in.o
+ .text.ti_adc108s102_read
+                0x0000000000102a71      0x214 drivers/built-in.o
+ .text.ti_adc108s102_enable
+                0x0000000000102c85        0x5 drivers/built-in.o
+ .text.strcmp   0x0000000000102c8a       0x23 lib/built-in.o
+                0x0000000000102c8a                strcmp
+ .text.memset   0x0000000000102cad       0x64 lib/built-in.o
+                0x0000000000102cad                memset
+ .text._nop_char_out
+                0x0000000000102d11        0x7 misc/built-in.o
+ .text._printk_dec_ulong
+                0x0000000000102d18       0xa3 misc/built-in.o
+ .text.__printk_hook_install
+                0x0000000000102dbb        0xd misc/built-in.o
+                0x0000000000102dbb                __printk_hook_install
+ .text.printk   0x0000000000102dc8      0x239 misc/built-in.o
+                0x0000000000102dc8                printk
+ .text._ConfigAbsSyms
+                0x0000000000103001        0x5 misc/built-in.o
+                0x0000000000103001                _ConfigAbsSyms
+ .text.gpio_pin_configure
+                0x0000000000103006       0x19 boards/built-in.o
+ .text.gpio_pin_write
+                0x000000000010301f       0x17 boards/built-in.o
+ .text._galileo_pinmux_set_pin
+                0x0000000000103036      0x13c boards/built-in.o
+                0x0000000000103036                _galileo_pinmux_set_pin
+ .text.pinmux_galileo_initialize
+                0x0000000000103172       0xbb boards/built-in.o
+ .text.pci_legacy_bridge_irq_config
+                0x000000000010322d       0xb6 arch/built-in.o
+ .text.nano_cpu_idle
+                0x00000000001032e3        0x7 arch/built-in.o
+                0x00000000001032e3                nano_cpu_idle
+ .text._SysFatalErrorHandler
+                0x00000000001032ea       0x57 arch/built-in.o
+                0x00000000001032ea                _SysFatalErrorHandler
+ .text._cache_line_size_get
+                0x0000000000103341       0x14 arch/built-in.o
+                0x0000000000103341                _cache_line_size_get
+ .text.init_cache
+                0x0000000000103355       0x11 arch/built-in.o
+ .text._exception_enter
+                0x0000000000103366       0x2c arch/built-in.o
+                0x0000000000103366                _exception_enter
+ .text._interrupt_enter
+                0x0000000000103392       0x61 arch/built-in.o
+                0x0000000000103392                _interrupt_enter
+ .text._SpuriousIntNoErrCodeHandler
+                0x00000000001033f3        0x2 arch/built-in.o
+                0x00000000001033f3                _SpuriousIntNoErrCodeHandler
+ .text._SpuriousIntHandler
+                0x00000000001033f5       0x16 arch/built-in.o
+                0x00000000001033f5                _SpuriousIntHandler
+ .text._Swap    0x000000000010340b       0x2b arch/built-in.o
+                0x000000000010340b                _Swap
+ .text._new_thread
+                0x0000000000103436       0x69 arch/built-in.o
+                0x0000000000103436                _new_thread
+ .text._debug_fatal_hook
+                0x000000000010349f        0x5 arch/built-in.o
+                0x000000000010349f                _debug_fatal_hook
+ .text._NanoFatalErrorHandler
+                0x00000000001034a4       0xf4 arch/built-in.o
+                0x00000000001034a4                _NanoFatalErrorHandler
+ .text.generic_exc_handle
+                0x0000000000103598       0x37 arch/built-in.o
+ .text.handle_exc_0
+                0x00000000001035cf        0xd arch/built-in.o
+                0x00000000001035cf                handle_exc_0
+ .text.handle_exc_2
+                0x00000000001035dc       0x10 arch/built-in.o
+                0x00000000001035dc                handle_exc_2
+ .text.handle_exc_4
+                0x00000000001035ec       0x10 arch/built-in.o
+                0x00000000001035ec                handle_exc_4
+ .text.handle_exc_5
+                0x00000000001035fc       0x10 arch/built-in.o
+                0x00000000001035fc                handle_exc_5
+ .text.handle_exc_6
+                0x000000000010360c       0x10 arch/built-in.o
+                0x000000000010360c                handle_exc_6
+ .text.handle_exc_7
+                0x000000000010361c       0x10 arch/built-in.o
+                0x000000000010361c                handle_exc_7
+ .text.handle_exc_8
+                0x000000000010362c       0x10 arch/built-in.o
+                0x000000000010362c                handle_exc_8
+ .text.handle_exc_10
+                0x000000000010363c       0x10 arch/built-in.o
+                0x000000000010363c                handle_exc_10
+ .text.handle_exc_11
+                0x000000000010364c       0x10 arch/built-in.o
+                0x000000000010364c                handle_exc_11
+ .text.handle_exc_12
+                0x000000000010365c       0x10 arch/built-in.o
+                0x000000000010365c                handle_exc_12
+ .text.handle_exc_13
+                0x000000000010366c       0x10 arch/built-in.o
+                0x000000000010366c                handle_exc_13
+ .text.handle_exc_14
+                0x000000000010367c       0x10 arch/built-in.o
+                0x000000000010367c                handle_exc_14
+ .text.handle_exc_16
+                0x000000000010368c       0x10 arch/built-in.o
+                0x000000000010368c                handle_exc_16
+ .text.handle_exc_17
+                0x000000000010369c       0x10 arch/built-in.o
+                0x000000000010369c                handle_exc_17
+ .text.handle_exc_18
+                0x00000000001036ac       0x10 arch/built-in.o
+                0x00000000001036ac                handle_exc_18
+ .text._sys_device_do_config_level
+                0x00000000001036bc       0x2b kernel/unified/lib.a(device.o)
+                0x00000000001036bc                _sys_device_do_config_level
+ .text.device_get_binding
+                0x00000000001036e7       0x39 kernel/unified/lib.a(device.o)
+                0x00000000001036e7                device_get_binding
+ .text.device_busy_set
+                0x0000000000103720        0x5 kernel/unified/lib.a(device.o)
+                0x0000000000103720                device_busy_set
+ .text.device_busy_clear
+                0x0000000000103725        0x5 kernel/unified/lib.a(device.o)
+                0x0000000000103725                device_busy_clear
+ .text._main    0x000000000010372a       0x51 kernel/unified/lib.a(init.o)
+ .text._Cstart  0x000000000010377b      0x10e kernel/unified/lib.a(init.o)
+                0x000000000010377b                _Cstart
+ .text.nano_timer_test
+                0x0000000000103889       0x2b kernel/unified/lib.a(legacy_timer.o)
+                0x0000000000103889                nano_timer_test
+ .text._get_highest_ready_prio
+                0x00000000001038b4       0x16 kernel/unified/lib.a(sched.o)
+ .text._is_timeout_insert_point
+                0x00000000001038ca       0x28 kernel/unified/lib.a(sched.o)
+ .text._is_wait_q_insert_point
+                0x00000000001038f2       0x14 kernel/unified/lib.a(sched.o)
+ .text.sys_dlist_insert_at
+                0x0000000000103906       0x5a kernel/unified/lib.a(sched.o)
+ .text._add_thread_to_ready_q
+                0x0000000000103960       0x65 kernel/unified/lib.a(sched.o)
+                0x0000000000103960                _add_thread_to_ready_q
+ .text._remove_thread_from_ready_q
+                0x00000000001039c5       0x56 kernel/unified/lib.a(sched.o)
+                0x00000000001039c5                _remove_thread_from_ready_q
+ .text._ms_to_ticks
+                0x0000000000103a1b       0x26 kernel/unified/lib.a(sched.o)
+                0x0000000000103a1b                _ms_to_ticks
+ .text._pend_thread
+                0x0000000000103a41       0x7e kernel/unified/lib.a(sched.o)
+                0x0000000000103a41                _pend_thread
+ .text._pend_current_thread
+                0x0000000000103abf       0x25 kernel/unified/lib.a(sched.o)
+                0x0000000000103abf                _pend_current_thread
+ .text._get_next_ready_thread
+                0x0000000000103ae4       0x1f kernel/unified/lib.a(sched.o)
+                0x0000000000103ae4                _get_next_ready_thread
+ .text.__must_switch_threads
+                0x0000000000103b03       0x1a kernel/unified/lib.a(sched.o)
+                0x0000000000103b03                __must_switch_threads
+ .text._reschedule_threads
+                0x0000000000103b1d       0x32 kernel/unified/lib.a(sched.o)
+                0x0000000000103b1d                _reschedule_threads
+ .text.k_sched_unlock
+                0x0000000000103b4f       0x18 kernel/unified/lib.a(sched.o)
+                0x0000000000103b4f                k_sched_unlock
+ .text._is_next_thread_current
+                0x0000000000103b67       0x16 kernel/unified/lib.a(sched.o)
+                0x0000000000103b67                _is_next_thread_current
+ .text._move_thread_to_end_of_prio_q
+                0x0000000000103b7d       0x58 kernel/unified/lib.a(sched.o)
+                0x0000000000103b7d                _move_thread_to_end_of_prio_q
+ .text.k_current_get
+                0x0000000000103bd5        0xa kernel/unified/lib.a(sched.o)
+                0x0000000000103bd5                k_current_get
+ .text._abort_timeout
+                0x0000000000103bdf       0x31 kernel/unified/lib.a(sem.o)
+ .text._unpend_first_thread
+                0x0000000000103c10       0x24 kernel/unified/lib.a(sem.o)
+ .text._ready_thread
+                0x0000000000103c34       0x25 kernel/unified/lib.a(sem.o)
+ .text.sem_give_common
+                0x0000000000103c59      0x126 kernel/unified/lib.a(sem.o)
+ .text.k_sem_init
+                0x0000000000103d7f       0x19 kernel/unified/lib.a(sem.o)
+                0x0000000000103d7f                k_sem_init
+ .text.k_sem_give
+                0x0000000000103d98       0x26 kernel/unified/lib.a(sem.o)
+                0x0000000000103d98                k_sem_give
+ .text.k_sem_take
+                0x0000000000103dbe       0x47 kernel/unified/lib.a(sem.o)
+                0x0000000000103dbe                k_sem_take
+ .text._nano_sys_clock_tick_announce
+                0x0000000000103e05      0x152 kernel/unified/lib.a(sys_clock.o)
+                0x0000000000103e05                _nano_sys_clock_tick_announce
+ .text._is_thread_ready
+                0x0000000000103f57       0x1c kernel/unified/lib.a(thread.o)
+ .text._k_thread_single_start
+                0x0000000000103f73       0x23 kernel/unified/lib.a(thread.o)
+                0x0000000000103f73                _k_thread_single_start
+ .text.start_thread
+                0x0000000000103f96       0x4f kernel/unified/lib.a(thread.o)
+ .text._abort_timeout
+                0x0000000000103fe5       0x31 kernel/unified/lib.a(thread.o)
+ .text._sched_lock
+                0x0000000000104016        0xe kernel/unified/lib.a(thread.o)
+ .text.schedule_new_thread.part.13
+                0x0000000000104024       0x84 kernel/unified/lib.a(thread.o)
+ .text.k_is_in_isr
+                0x00000000001040a8       0x11 kernel/unified/lib.a(thread.o)
+                0x00000000001040a8                k_is_in_isr
+ .text._is_thread_essential
+                0x00000000001040b9       0x12 kernel/unified/lib.a(thread.o)
+                0x00000000001040b9                _is_thread_essential
+ .text._thread_entry
+                0x00000000001040cb       0x33 kernel/unified/lib.a(thread.o)
+                0x00000000001040cb                _thread_entry
+ .text.k_thread_spawn
+                0x00000000001040fe       0x48 kernel/unified/lib.a(thread.o)
+                0x00000000001040fe                k_thread_spawn
+ .text._k_thread_group_op
+                0x0000000000104146       0x72 kernel/unified/lib.a(thread.o)
+                0x0000000000104146                _k_thread_group_op
+ .text._k_thread_single_abort
+                0x00000000001041b8       0x58 kernel/unified/lib.a(thread.o)
+                0x00000000001041b8                _k_thread_single_abort
+ .text._init_static_threads
+                0x0000000000104210       0x91 kernel/unified/lib.a(thread.o)
+                0x0000000000104210                _init_static_threads
+ .text._init_thread_base
+                0x00000000001042a1       0x3a kernel/unified/lib.a(thread.o)
+                0x00000000001042a1                _init_thread_base
+ .text.k_thread_abort
+                0x00000000001042db       0x2f kernel/unified/lib.a(thread_abort.o)
+                0x00000000001042db                k_thread_abort
+ .text._is_timeout_insert_point
+                0x000000000010430a       0x28 kernel/unified/lib.a(timer.o)
+ .text._ready_thread
+                0x0000000000104332       0x25 kernel/unified/lib.a(timer.o)
+ .text._abort_timeout
+                0x0000000000104357       0x31 kernel/unified/lib.a(timer.o)
+ .text._unpend_first_thread
+                0x0000000000104388       0x24 kernel/unified/lib.a(timer.o)
+ .text.sys_dlist_insert_at.constprop.7
+                0x00000000001043ac       0x6a kernel/unified/lib.a(timer.o)
+ .text._timer_expiration_handler
+                0x0000000000104416       0x67 kernel/unified/lib.a(timer.o)
+                0x0000000000104416                _timer_expiration_handler
+ .text.k_timer_init
+                0x000000000010447d       0x47 kernel/unified/lib.a(timer.o)
+                0x000000000010447d                k_timer_init
+ .text.k_timer_start
+                0x00000000001044c4       0x5f kernel/unified/lib.a(timer.o)
+                0x00000000001044c4                k_timer_start
+ .text.k_timer_status_get
+                0x0000000000104523       0x1b kernel/unified/lib.a(timer.o)
+                0x0000000000104523                k_timer_status_get
+ .text.k_timer_status_sync
+                0x000000000010453e       0x46 kernel/unified/lib.a(timer.o)
+                0x000000000010453e                k_timer_status_sync
+ .text.idle     0x0000000000104584        0xd kernel/unified/lib.a(idle.o)
+                0x0000000000104584                idle
+ .text._OffsetAbsSyms
+                0x0000000000104591        0x5 ./arch/x86/core/offsets/offsets.o
+                0x0000000000104591                _OffsetAbsSyms
+ *(.gnu.linkonce.t.*)
+ .gnu.linkonce.t.exc_0_stub
+                0x0000000000104596        0xc arch/built-in.o
+                0x0000000000104596                _handle_exc_0_vector_0_stub
+ .gnu.linkonce.t.exc_2_stub
+                0x00000000001045a2        0xc arch/built-in.o
+                0x00000000001045a2                _handle_exc_2_vector_2_stub
+ .gnu.linkonce.t.exc_4_stub
+                0x00000000001045ae        0xc arch/built-in.o
+                0x00000000001045ae                _handle_exc_4_vector_4_stub
+ .gnu.linkonce.t.exc_5_stub
+                0x00000000001045ba        0xc arch/built-in.o
+                0x00000000001045ba                _handle_exc_5_vector_5_stub
+ .gnu.linkonce.t.exc_6_stub
+                0x00000000001045c6        0xc arch/built-in.o
+                0x00000000001045c6                _handle_exc_6_vector_6_stub
+ .gnu.linkonce.t.exc_7_stub
+                0x00000000001045d2        0xc arch/built-in.o
+                0x00000000001045d2                _handle_exc_7_vector_7_stub
+ .gnu.linkonce.t.exc_8_stub
+                0x00000000001045de        0xa arch/built-in.o
+                0x00000000001045de                _handle_exc_8_vector_8_stub
+ .gnu.linkonce.t.exc_10_stub
+                0x00000000001045e8        0xa arch/built-in.o
+                0x00000000001045e8                _handle_exc_10_vector_10_stub
+ .gnu.linkonce.t.exc_11_stub
+                0x00000000001045f2        0xa arch/built-in.o
+                0x00000000001045f2                _handle_exc_11_vector_11_stub
+ .gnu.linkonce.t.exc_12_stub
+                0x00000000001045fc        0xa arch/built-in.o
+                0x00000000001045fc                _handle_exc_12_vector_12_stub
+ .gnu.linkonce.t.exc_13_stub
+                0x0000000000104606        0xa arch/built-in.o
+                0x0000000000104606                _handle_exc_13_vector_13_stub
+ .gnu.linkonce.t.exc_14_stub
+                0x0000000000104610        0xa arch/built-in.o
+                0x0000000000104610                _handle_exc_14_vector_14_stub
+ .gnu.linkonce.t.exc_16_stub
+                0x000000000010461a        0xc arch/built-in.o
+                0x000000000010461a                _handle_exc_16_vector_16_stub
+ .gnu.linkonce.t.exc_17_stub
+                0x0000000000104626        0xa arch/built-in.o
+                0x0000000000104626                _handle_exc_17_vector_17_stub
+ .gnu.linkonce.t.exc_18_stub
+                0x0000000000104630        0xc arch/built-in.o
+                0x0000000000104630                _handle_exc_18_vector_18_stub
+ *(.eh_frame)
+ *(.init)
+ *(.fini)
+ *(.eini)
+                0x000000000010463c                _image_text_end = .
+
+.iplt           0x0000000000104640        0x0
+ .iplt          0x0000000000104640        0x0 src/built-in.o
+
+.igot.plt       0x000000000010463c        0x0
+ .igot.plt      0x000000000010463c        0x0 src/built-in.o
+
+.rel.dyn        0x000000000010463c        0x0
+ .rel.iplt      0x000000000010463c        0x0 src/built-in.o
+ .rel.text.main
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text.uart_console_hook_install
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text.uart_console_init
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text._timer_int_handler
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text._sys_clock_driver_init
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text.irqstubs
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text.pci_header_get
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text.shared_irq_config_0_irq
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text.spi_config_0_irq
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text.spi_intel_init
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text.spi_intel_isr
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text.spi_intel_transceive
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text.gpio_config_0_irq
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text.gpio_pcal9535a_init
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text.gpio_sch_init
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text._gpio_sch_manage_callback
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text._gpio_sch_poll_status
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text.i2c_dw_transfer
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text.i2c_dw_isr
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text.i2c_dw_initialize
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text.i2c_config_0
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text.pwm_pca9685_init
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text.ti_adc108s102_init
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text.ti_adc108s102_read
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.init_POST_KERNEL45
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text.pinmux_galileo_initialize
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text._SysFatalErrorHandler
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text_start.__start
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text.init_cache
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text._interrupt_enter
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text._Swap
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text._new_thread
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text._NanoFatalErrorHandler
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text.device_get_binding
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.rodata.config_levels
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text._get_errno
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text._bss_zero
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text._main
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text._Cstart
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text._legacy_sleep
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text.nano_timer_test
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text._ms_to_ticks
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text._pend_thread
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text.k_sleep
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text.k_sched_time_slice_set
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text.k_sem_group_take
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text._tick_get_32
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text.k_uptime_get_32
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text._tick_get
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text.k_uptime_get
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text.sys_tick_delta
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text.sys_tick_delta_32
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text._nano_sys_clock_tick_announce
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text.k_busy_wait
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text._thread_entry
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text._k_thread_group_op
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text._init_static_threads
+                0x000000000010463c        0x0 src/built-in.o
+ .rel.text.k_timer_remaining_get
+                0x000000000010463c        0x0 src/built-in.o
+
+devconfig       0x000000000010463c       0xf0
+                0x000000000010463c                __devconfig_start = .
+ *(.devconfig.*)
+ .devconfig.init
+                0x000000000010463c       0xcc drivers/built-in.o
+ .devconfig.init
+                0x0000000000104708        0xc boards/built-in.o
+ .devconfig.init
+                0x0000000000104714       0x18 arch/built-in.o
+ *(SORT(.devconfig*))
+                0x000000000010472c                __devconfig_end = .
+
+rodata          0x0000000000104740     0x26e8
+ *(.rodata)
+ *(.rodata.*)
+ .rodata.str1.1
+                0x0000000000104740        0xc src/built-in.o
+ .rodata.str1.1
+                0x000000000010474c       0x61 drivers/built-in.o
+                                         0x9c (size before relaxing)
+ *fill*         0x00000000001047ad        0x3 
+ .rodata.uart_ns16550_dev_cfg_1
+                0x00000000001047b0        0x4 drivers/built-in.o
+ .rodata.uart_ns16550_dev_cfg_0
+                0x00000000001047b4        0x4 drivers/built-in.o
+ .rodata.uart_ns16550_driver_api
+                0x00000000001047b8        0xc drivers/built-in.o
+ .rodata.shared_irq_config_0
+                0x00000000001047c4        0xc drivers/built-in.o
+                0x00000000001047c4                shared_irq_config_0
+ .rodata.api_funcs
+                0x00000000001047d0       0x28 drivers/built-in.o
+ .rodata.spi_intel_config_0
+                0x00000000001047f8       0x10 drivers/built-in.o
+                0x00000000001047f8                spi_intel_config_0
+ .rodata.intel_spi_api
+                0x0000000000104808        0xc drivers/built-in.o
+ .rodata.CSWTCH.38
+                0x0000000000104814        0x3 drivers/built-in.o
+ *fill*         0x0000000000104817        0x1 
+ .rodata.gpio_config_0
+                0x0000000000104818       0x10 drivers/built-in.o
+ .rodata.gpio_pcal9535a_2_cfg
+                0x0000000000104828        0x8 drivers/built-in.o
+ .rodata.gpio_pcal9535a_1_cfg
+                0x0000000000104830        0x8 drivers/built-in.o
+ .rodata.gpio_pcal9535a_0_cfg
+                0x0000000000104838        0x8 drivers/built-in.o
+ .rodata.gpio_pcal9535a_drv_api_funcs
+                0x0000000000104840       0x1c drivers/built-in.o
+ .rodata.gpio_sch_1_config
+                0x000000000010485c        0x8 drivers/built-in.o
+ .rodata.gpio_sch_0_config
+                0x0000000000104864        0x8 drivers/built-in.o
+ .rodata.gpio_sch_api
+                0x000000000010486c       0x1c drivers/built-in.o
+ .rodata.i2c_config_dw_0
+                0x0000000000104888       0x10 drivers/built-in.o
+ .rodata.funcs  0x0000000000104898        0x8 drivers/built-in.o
+ .rodata.pwm_pca9685_0_cfg
+                0x00000000001048a0        0x8 drivers/built-in.o
+ .rodata.pwm_pca9685_drv_api_funcs
+                0x00000000001048a8       0x1c drivers/built-in.o
+ .rodata.adc108s102_config
+                0x00000000001048c4       0x10 drivers/built-in.o
+ .rodata.ti_adc108s102_api
+                0x00000000001048d4        0xc drivers/built-in.o
+ .rodata._galileo_pinmux_set_pin
+                0x00000000001048e0       0x1c boards/built-in.o
+ .rodata.str1.1
+                0x00000000001048fc        0x7 boards/built-in.o
+                                         0x32 (size before relaxing)
+ *fill*         0x0000000000104903       0x1d 
+ .rodata._galileo_path
+                0x0000000000104920     0x1a40 boards/built-in.o
+ .rodata.str1.1
+                0x0000000000106360      0x1c6 arch/built-in.o
+                                        0x1cf (size before relaxing)
+ *fill*         0x0000000000106526       0x1a 
+ .rodata._default_esf
+                0x0000000000106540       0x30 arch/built-in.o
+                0x0000000000106540                _default_esf
+ *fill*         0x0000000000106570       0x10 
+ .rodata.config_levels
+                0x0000000000106580       0x24 kernel/unified/lib.a(device.o)
+ .rodata._k_neg_eagain
+                0x00000000001065a4        0x4 kernel/unified/lib.a(errno.o)
+                0x00000000001065a4                _k_neg_eagain
+ *(.gnu.linkonce.r.*)
+                0x00000000001065a8                . = ALIGN (0x8)
+                0x00000000001065a8                _idt_base_address = .
+ *(staticIdt)
+ staticIdt      0x00000000001065a8      0x800 staticIdt.o
+                0x00000000001065a8                _binary_staticIdt_bin_start
+                0x0000000000106da8                _binary_staticIdt_bin_end
+                0x0000000000106da8                . = ALIGN (0x4)
+                0x0000000000106da8                _irq_to_interrupt_vector = .
+ *(irq_int_vector_map)
+ irq_int_vector_map
+                0x0000000000106da8       0x80 irq_int_vector_map.o
+                0x0000000000106da8                _binary_irq_int_vector_map_bin_start
+                0x0000000000106e28                _binary_irq_int_vector_map_bin_end
+                0x0000000000106e28                _image_rom_end = .
+                0x0000000000106e28                __data_rom_start = ALIGN (0x4)
+
+datas           0x0000000000106e40      0x310
+                0x0000000000106e40                _image_ram_start = .
+                0x0000000000106e40                __data_ram_start = .
+ *(.top_of_image_ram)
+ *(.top_of_image_ram.*)
+ *(.data)
+ *(.data.*)
+ .data.uart_ns16550_dev_data_1
+                0x0000000000106e40       0x20 drivers/built-in.o
+ .data.uart_ns16550_dev_data_0
+                0x0000000000106e60       0x20 drivers/built-in.o
+ .data.spi_intel_data_port_0
+                0x0000000000106e80       0x54 drivers/built-in.o
+                0x0000000000106e80                spi_intel_data_port_0
+ *fill*         0x0000000000106ed4        0xc 
+ .data.gpio_0_runtime
+                0x0000000000106ee0       0x20 drivers/built-in.o
+ .data.gpio_pcal9535a_2_drvdata
+                0x0000000000106f00       0x48 drivers/built-in.o
+ *fill*         0x0000000000106f48       0x18 
+ .data.gpio_pcal9535a_1_drvdata
+                0x0000000000106f60       0x48 drivers/built-in.o
+ *fill*         0x0000000000106fa8       0x18 
+ .data.gpio_pcal9535a_0_drvdata
+                0x0000000000106fc0       0x48 drivers/built-in.o
+ *fill*         0x0000000000107008       0x18 
+ .data.i2c_0_runtime
+                0x0000000000107020       0x40 drivers/built-in.o
+ .data._char_out
+                0x0000000000107060        0x4 misc/built-in.o
+                0x0000000000107060                _char_out
+ *fill*         0x0000000000107064       0x1c 
+ .data.mux_config
+                0x0000000000107080       0xa0 boards/built-in.o
+ .data.galileo_pinmux_driver
+                0x0000000000107120       0x20 boards/built-in.o
+                0x0000000000107120                galileo_pinmux_driver
+ .data._sys_idle_elapsed_ticks
+                0x0000000000107140        0x4 kernel/unified/lib.a(sys_clock.o)
+                0x0000000000107140                _sys_idle_elapsed_ticks
+ .data.sys_clock_hw_cycles_per_sec
+                0x0000000000107144        0x4 kernel/unified/lib.a(sys_clock.o)
+                0x0000000000107144                sys_clock_hw_cycles_per_sec
+ .data.sys_clock_hw_cycles_per_tick
+                0x0000000000107148        0x4 kernel/unified/lib.a(sys_clock.o)
+                0x0000000000107148                sys_clock_hw_cycles_per_tick
+ .data.sys_clock_us_per_tick
+                0x000000000010714c        0x4 kernel/unified/lib.a(sys_clock.o)
+                0x000000000010714c                sys_clock_us_per_tick
+                0x0000000000107150                . = ALIGN (0x4)
+
+initlevel       0x0000000000107150       0xf0
+                0x0000000000107150                __device_init_start = .
+                0x0000000000107150                __device_PRE_KERNEL_1_start = .
+ *(SORT(.init_PRE_KERNEL_1[0-9]))
+ *(SORT(.init_PRE_KERNEL_1[1-9][0-9]))
+ .init_PRE_KERNEL_140
+                0x0000000000107150       0x18 drivers/built-in.o
+ .init_PRE_KERNEL_140
+                0x0000000000107168        0xc arch/built-in.o
+ .init_PRE_KERNEL_150
+                0x0000000000107174       0x18 drivers/built-in.o
+                0x000000000010718c                __device_PRE_KERNEL_2_start = .
+ *(SORT(.init_PRE_KERNEL_2[0-9]))
+ *(SORT(.init_PRE_KERNEL_2[1-9][0-9]))
+                0x000000000010718c                __device_POST_KERNEL_start = .
+ *(SORT(.init_POST_KERNEL[0-9]))
+ .init_POST_KERNEL0
+                0x000000000010718c        0xc drivers/built-in.o
+ *(SORT(.init_POST_KERNEL[1-9][0-9]))
+ .init_POST_KERNEL45
+                0x0000000000107198        0xc drivers/built-in.o
+ .init_POST_KERNEL50
+                0x00000000001071a4        0xc arch/built-in.o
+ .init_POST_KERNEL60
+                0x00000000001071b0       0x3c drivers/built-in.o
+ .init_POST_KERNEL70
+                0x00000000001071ec       0x30 drivers/built-in.o
+ .init_POST_KERNEL80
+                0x000000000010721c        0xc boards/built-in.o
+ .init_POST_KERNEL90
+                0x0000000000107228        0xc drivers/built-in.o
+ .init_POST_KERNEL95
+                0x0000000000107234        0xc drivers/built-in.o
+                0x0000000000107240                __device_APPLICATION_start = .
+ *(SORT(.init_APPLICATION[0-9]))
+ *(SORT(.init_APPLICATION[1-9][0-9]))
+                0x0000000000107240                __device_PRIMARY_start = .
+ *(SORT(.init_PRIMARY[0-9]))
+ *(SORT(.init_PRIMARY[1-9][0-9]))
+                0x0000000000107240                __device_SECONDARY_start = .
+ *(SORT(.init_SECONDARY[0-9]))
+ *(SORT(.init_SECONDARY[1-9][0-9]))
+                0x0000000000107240                __device_NANOKERNEL_start = .
+ *(SORT(.init_NANOKERNEL[0-9]))
+ *(SORT(.init_NANOKERNEL[1-9][0-9]))
+                0x0000000000107240                __device_MICROKERNEL_start = .
+ *(SORT(.init_MICROKERNEL[0-9]))
+ *(SORT(.init_MICROKERNEL[1-9][0-9]))
+                0x0000000000107240                __device_init_end = .
+
+initlevel_error
+                0x0000000000106e28        0x0
+ *(SORT(.init_[_A-Z0-9]*))
+                0x0000000000000001                ASSERT ((SIZEOF (initlevel_error) == 0x0), Undefined initialization levels used.)
+
+initshell       0x0000000000107240        0x0
+                0x0000000000107240                __shell_cmd_start = .
+ *(.shell_*)
+                0x0000000000107240                __shell_cmd_end = .
+
+_static_thread_area
+                0x0000000000107240        0x0
+                0x0000000000107240                _static_thread_data_list_start = .
+ *(SORT(._static_thread_data.static.*))
+                0x0000000000107240                _static_thread_data_list_end = .
+
+_k_timer_area   0x0000000000107240        0x0
+                0x0000000000107240                _k_timer_list_start = .
+ *(SORT(._k_timer.static.*))
+                0x0000000000107240                _k_timer_list_end = .
+
+_k_mem_slab_area
+                0x0000000000107240        0x0
+                0x0000000000107240                _k_mem_slab_list_start = .
+ *(SORT(._k_mem_slab.static.*))
+                0x0000000000107240                _k_mem_slab_list_end = .
+
+_k_mem_pool_area
+                0x0000000000107240        0x0
+ *(SORT(._k_memory_pool.struct*))
+                0x0000000000107240                _k_mem_pool_list_start = .
+ *(SORT(._k_mem_pool.static.*))
+                0x0000000000107240                _k_mem_pool_list_end = .
+
+_k_sem_area     0x0000000000107240        0x0
+                0x0000000000107240                _k_sem_list_start = .
+ *(SORT(._k_sem.static.*))
+                0x0000000000107240                _k_sem_list_end = .
+
+_k_mutex_area   0x0000000000107240        0x0
+                0x0000000000107240                _k_mutex_list_start = .
+ *(SORT(._k_mutex.static.*))
+                0x0000000000107240                _k_mutex_list_end = .
+
+_k_alert_area   0x0000000000107240        0x0
+                0x0000000000107240                _k_alert_list_start = .
+ *(SORT(._k_alert.static.*))
+                0x0000000000107240                _k_alert_list_end = .
+
+_k_fifo_area    0x0000000000107240        0x0
+                0x0000000000107240                _k_fifo_list_start = .
+ *(SORT(._k_fifo.static.*))
+                0x0000000000107240                _k_fifo_list_end = .
+
+_k_lifo_area    0x0000000000107240        0x0
+                0x0000000000107240                _k_lifo_list_start = .
+ *(SORT(._k_lifo.static.*))
+                0x0000000000107240                _k_lifo_list_end = .
+
+_k_stack_area   0x0000000000107240        0x0
+                0x0000000000107240                _k_stack_list_start = .
+ *(SORT(._k_stack.static.*))
+                0x0000000000107240                _k_stack_list_end = .
+
+_k_msgq_area    0x0000000000107240        0x0
+                0x0000000000107240                _k_msgq_list_start = .
+ *(SORT(._k_msgq.static.*))
+                0x0000000000107240                _k_msgq_list_end = .
+
+_k_mbox_area    0x0000000000107240        0x0
+                0x0000000000107240                _k_mbox_list_start = .
+ *(SORT(._k_mbox.static.*))
+                0x0000000000107240                _k_mbox_list_end = .
+
+_k_pipe_area    0x0000000000107240        0x0
+                0x0000000000107240                _k_pipe_list_start = .
+ *(SORT(._k_pipe.static.*))
+                0x0000000000107240                _k_pipe_list_end = .
+
+_k_task_list    0x0000000000107240        0x0
+                0x0000000000107240                _k_task_list_start = .
+ *(._k_task_list.public.*)
+ *(._k_task_list.private.*)
+                0x0000000000107240                _k_task_list_idle_start = .
+ *(._k_task_list.idle.*)
+ *(SORT(._k_task_list*))
+                0x0000000000107240                _k_task_list_end = .
+
+_k_task_ptr     0x0000000000107240        0x0
+                0x0000000000107240                _k_task_ptr_start = .
+ *(._k_task_ptr.public.*)
+ *(._k_task_ptr.private.*)
+ *(._k_task_ptr.idle.*)
+ *(SORT(._k_task_ptr*))
+                0x0000000000107240                _k_task_ptr_end = .
+
+_k_pipe_ptr     0x0000000000107240        0x0
+                0x0000000000107240                _k_pipe_ptr_start = .
+ *(._k_pipe_ptr.public.*)
+ *(._k_pipe_ptr.private.*)
+ *(SORT(._k_pipe_ptr*))
+                0x0000000000107240                _k_pipe_ptr_end = .
+
+_k_mem_map_ptr  0x0000000000107240        0x0
+                0x0000000000107240                _k_mem_map_ptr_start = .
+ *(._k_mem_map_ptr.public.*)
+ *(._k_mem_map_ptr.private.*)
+ *(SORT(._k_mem_map_ptr*))
+                0x0000000000107240                _k_mem_map_ptr_end = .
+
+_k_event_list   0x0000000000107240        0x0
+                0x0000000000107240                _k_event_list_start = .
+ *(._k_event_list.event.*)
+ *(SORT(._k_event_list*))
+                0x0000000000107240                _k_event_list_end = .
+
+_k_memory_pool  0x0000000000107240        0x0
+ *(._k_memory_pool.struct*)
+ *(SORT(._k_memory_pool.struct*))
+                0x0000000000107240                _k_mem_pool_start = .
+ *(._k_memory_pool.*)
+ *(SORT(._k_memory_pool*))
+                0x0000000000107240                _k_mem_pool_end = .
+                0x0000000000107240                __data_ram_end = .
+
+bss             0x0000000000107240      0xce0
+                0x0000000000107240                . = ALIGN (0x4)
+                0x0000000000107240                __bss_start = .
+ *(.bss)
+ *(.bss.*)
+ .bss.hcsr0_dev
+                0x0000000000107240        0x4 src/built-in.o
+ .bss.uart_console_dev
+                0x0000000000107244        0x4 drivers/built-in.o
+ *fill*         0x0000000000107248       0x18 
+ .bss.pci_dev_header.2661
+                0x0000000000107260      0x100 drivers/built-in.o
+ .bss.pci_dev_header.2639
+                0x0000000000107360      0x100 drivers/built-in.o
+ .bss.gpio_data_1
+                0x0000000000107460      0x44c drivers/built-in.o
+ *fill*         0x00000000001078ac       0x14 
+ .bss.gpio_data_0
+                0x00000000001078c0      0x44c drivers/built-in.o
+ .bss.pwm_pca9685_0_drvdata
+                0x0000000000107d0c        0x4 drivers/built-in.o
+ *fill*         0x0000000000107d10       0x10 
+ .bss.adc108s102_data
+                0x0000000000107d20       0x50 drivers/built-in.o
+ *fill*         0x0000000000107d70       0x10 
+ .bss._kernel   0x0000000000107d80      0x11c kernel/unified/lib.a(sched.o)
+                0x0000000000107d80                _kernel
+ .bss._time_slice_prio_ceiling
+                0x0000000000107e9c        0x4 kernel/unified/lib.a(sys_clock.o)
+                0x0000000000107e9c                _time_slice_prio_ceiling
+ .bss._time_slice_duration
+                0x0000000000107ea0        0x4 kernel/unified/lib.a(sys_clock.o)
+                0x0000000000107ea0                _time_slice_duration
+ *(COMMON)
+ COMMON         0x0000000000107ea4        0x8 src/built-in.o
+                0x0000000000107ea4                api1
+                0x0000000000107ea8                api0
+ *fill*         0x0000000000107eac       0x14 
+ COMMON         0x0000000000107ec0       0x40 drivers/built-in.o
+                0x0000000000107ec0                shared_irq_0_runtime
+                0x0000000000107efc                pci_cap_hdr_t
+ COMMON         0x0000000000107f00        0xc arch/built-in.o
+                0x0000000000107f00                _dummy_exception_vector_stub
+                0x0000000000107f04                sys_cache_line_size
+                0x0000000000107f08                _dummy_spurious_interrupt
+ *fill*         0x0000000000107f0c        0x4 
+ COMMON         0x0000000000107f10       0x10 kernel/unified/lib.a(sys_clock.o)
+                0x0000000000107f10                _time_slice_elapsed
+                0x0000000000107f18                _sys_clock_tick_count
+                0x0000000000107f20                . = ALIGN (0x4)
+                0x0000000000107f20                __bss_end = .
+
+noinit          0x0000000000107f20      0xd18
+ *(.noinit)
+ *(.noinit.*)
+ .noinit._FILE_PATH_HASH.0
+                0x0000000000107f20       0x18 drivers/built-in.o
+ .noinit._FILE_PATH_HASH.2
+                0x0000000000107f38      0x800 kernel/unified/lib.a(init.o)
+                0x0000000000107f38                _interrupt_stack
+ .noinit._FILE_PATH_HASH.1
+                0x0000000000108738      0x100 kernel/unified/lib.a(init.o)
+                0x0000000000108738                _idle_stack
+ .noinit._FILE_PATH_HASH.0
+                0x0000000000108838      0x400 kernel/unified/lib.a(init.o)
+                0x0000000000108838                _main_stack
+ *(.bottom_of_image_ram)
+ *(.bottom_of_image_ram.*)
+                0x0000000000108c38                _image_ram_end = .
+                0x0000000000108c38                _end = .
+                0x0000000000109000                . = ALIGN (0x1000)
+                0x0000000000000338                __bss_num_words = ((__bss_end - __bss_start) >> 0x2)
+
+intList         0x0000000000000800      0x174
+ *(.spurIsr)
+ .spurIsr       0x0000000000000800        0x4 arch/built-in.o
+                0x0000000000000800                __isr___SpuriousIntHandler
+ *(.spurNoErrIsr)
+ .spurNoErrIsr  0x0000000000000804        0x4 arch/built-in.o
+                0x0000000000000804                __isr___SpuriousIntNoErrCodeHandler
+                0x0000000000000808                __INT_LIST_START__ = .
+                0x0000000000000808        0x4 LONG 0x12 ((__INT_LIST_END__ - __INT_LIST_START__) / 0x14)
+ *(.intList)
+ .intList       0x000000000000080c       0x3c drivers/built-in.o
+ *(.gnu.linkonce.intList.*)
+ .gnu.linkonce.intList.exc_0
+                0x0000000000000848       0x14 arch/built-in.o
+ .gnu.linkonce.intList.exc_2
+                0x000000000000085c       0x14 arch/built-in.o
+ .gnu.linkonce.intList.exc_4
+                0x0000000000000870       0x14 arch/built-in.o
+ .gnu.linkonce.intList.exc_5
+                0x0000000000000884       0x14 arch/built-in.o
+ .gnu.linkonce.intList.exc_6
+                0x0000000000000898       0x14 arch/built-in.o
+ .gnu.linkonce.intList.exc_7
+                0x00000000000008ac       0x14 arch/built-in.o
+ .gnu.linkonce.intList.exc_8
+                0x00000000000008c0       0x14 arch/built-in.o
+ .gnu.linkonce.intList.exc_10
+                0x00000000000008d4       0x14 arch/built-in.o
+ .gnu.linkonce.intList.exc_11
+                0x00000000000008e8       0x14 arch/built-in.o
+ .gnu.linkonce.intList.exc_12
+                0x00000000000008fc       0x14 arch/built-in.o
+ .gnu.linkonce.intList.exc_13
+                0x0000000000000910       0x14 arch/built-in.o
+ .gnu.linkonce.intList.exc_14
+                0x0000000000000924       0x14 arch/built-in.o
+ .gnu.linkonce.intList.exc_16
+                0x0000000000000938       0x14 arch/built-in.o
+ .gnu.linkonce.intList.exc_17
+                0x000000000000094c       0x14 arch/built-in.o
+ .gnu.linkonce.intList.exc_18
+                0x0000000000000960       0x14 arch/built-in.o
+                0x0000000000000974                __INT_LIST_END__ = .
+OUTPUT(zephyr.elf elf32-i386)
+
+.comment        0x0000000000000000       0x11
+ .comment       0x0000000000000000       0x11 src/built-in.o
+                                         0x12 (size before relaxing)
+ .comment       0x0000000000000011      0x156 drivers/built-in.o
+ .comment       0x0000000000000011       0x5a lib/built-in.o
+ .comment       0x0000000000000011       0x48 misc/built-in.o
+ .comment       0x0000000000000011       0x12 boards/built-in.o
+ .comment       0x0000000000000011       0x90 arch/built-in.o
+ .comment       0x0000000000000011       0x12 kernel/unified/lib.a(device.o)
+ .comment       0x0000000000000011       0x12 kernel/unified/lib.a(errno.o)
+ .comment       0x0000000000000011       0x12 kernel/unified/lib.a(init.o)
+ .comment       0x0000000000000011       0x12 kernel/unified/lib.a(legacy_timer.o)
+ .comment       0x0000000000000011       0x12 kernel/unified/lib.a(sched.o)
+ .comment       0x0000000000000011       0x12 kernel/unified/lib.a(sem.o)
+ .comment       0x0000000000000011       0x12 kernel/unified/lib.a(sys_clock.o)
+ .comment       0x0000000000000011       0x12 kernel/unified/lib.a(thread.o)
+ .comment       0x0000000000000011       0x12 kernel/unified/lib.a(thread_abort.o)
+ .comment       0x0000000000000011       0x12 kernel/unified/lib.a(timer.o)
+ .comment       0x0000000000000011       0x12 kernel/unified/lib.a(idle.o)
+ .comment       0x0000000000000011       0x12 ./arch/x86/core/offsets/offsets.o
+ .comment       0x0000000000000011       0x12 /opt/zephyr-sdk/sysroots/i586-poky-elf/usr/lib/i586-poky-elf/5.2.0/libgcc.a(_divdi3.o)
+ .comment       0x0000000000000011       0x12 /opt/zephyr-sdk/sysroots/i586-poky-elf/usr/lib/i586-poky-elf/5.2.0/libgcc.a(_udivdi3.o)
+
+.debug_aranges  0x0000000000000000      0xf60
+ .debug_aranges
+                0x0000000000000000       0x28 src/built-in.o
+ .debug_aranges
+                0x0000000000000028      0x568 drivers/built-in.o
+ .debug_aranges
+                0x0000000000000590      0x188 lib/built-in.o
+ .debug_aranges
+                0x0000000000000718       0xa0 misc/built-in.o
+ .debug_aranges
+                0x00000000000007b8       0x48 boards/built-in.o
+ .debug_aranges
+                0x0000000000000800      0x288 arch/built-in.o
+ .debug_aranges
+                0x0000000000000a88       0x38 kernel/unified/lib.a(device.o)
+ .debug_aranges
+                0x0000000000000ac0       0x28 kernel/unified/lib.a(errno.o)
+ .debug_aranges
+                0x0000000000000ae8       0x40 kernel/unified/lib.a(init.o)
+ .debug_aranges
+                0x0000000000000b28       0x30 kernel/unified/lib.a(legacy_timer.o)
+ .debug_aranges
+                0x0000000000000b58       0xe8 kernel/unified/lib.a(sched.o)
+ .debug_aranges
+                0x0000000000000c40       0x78 kernel/unified/lib.a(sem.o)
+ .debug_aranges
+                0x0000000000000cb8       0x68 kernel/unified/lib.a(sys_clock.o)
+ .debug_aranges
+                0x0000000000000d20       0xf8 kernel/unified/lib.a(thread.o)
+ .debug_aranges
+                0x0000000000000e18       0x30 kernel/unified/lib.a(thread_abort.o)
+ .debug_aranges
+                0x0000000000000e48       0x80 kernel/unified/lib.a(timer.o)
+ .debug_aranges
+                0x0000000000000ec8       0x30 kernel/unified/lib.a(idle.o)
+ .debug_aranges
+                0x0000000000000ef8       0x28 ./arch/x86/core/offsets/offsets.o
+ .debug_aranges
+                0x0000000000000f20       0x20 /opt/zephyr-sdk/sysroots/i586-poky-elf/usr/lib/i586-poky-elf/5.2.0/libgcc.a(_divdi3.o)
+ .debug_aranges
+                0x0000000000000f40       0x20 /opt/zephyr-sdk/sysroots/i586-poky-elf/usr/lib/i586-poky-elf/5.2.0/libgcc.a(_udivdi3.o)
+
+.debug_info     0x0000000000000000    0x1ee0f
+ .debug_info    0x0000000000000000      0x45b src/built-in.o
+ .debug_info    0x000000000000045b     0xed39 drivers/built-in.o
+ .debug_info    0x000000000000f194     0x1779 lib/built-in.o
+ .debug_info    0x000000000001090d      0x69b misc/built-in.o
+ .debug_info    0x0000000000010fa8      0xbc8 boards/built-in.o
+ .debug_info    0x0000000000011b70     0x2d7c arch/built-in.o
+ .debug_info    0x00000000000148ec      0x41a kernel/unified/lib.a(device.o)
+ .debug_info    0x0000000000014d06      0x576 kernel/unified/lib.a(errno.o)
+ .debug_info    0x000000000001527c      0x98b kernel/unified/lib.a(init.o)
+ .debug_info    0x0000000000015c07      0xa67 kernel/unified/lib.a(legacy_timer.o)
+ .debug_info    0x000000000001666e     0x1a4a kernel/unified/lib.a(sched.o)
+ .debug_info    0x00000000000180b8     0x154d kernel/unified/lib.a(sem.o)
+ .debug_info    0x0000000000019605      0xf55 kernel/unified/lib.a(sys_clock.o)
+ .debug_info    0x000000000001a55a     0x1c61 kernel/unified/lib.a(thread.o)
+ .debug_info    0x000000000001c1bb      0x665 kernel/unified/lib.a(thread_abort.o)
+ .debug_info    0x000000000001c820     0x13ec kernel/unified/lib.a(timer.o)
+ .debug_info    0x000000000001dc0c      0x6b6 kernel/unified/lib.a(idle.o)
+ .debug_info    0x000000000001e2c2      0x55b ./arch/x86/core/offsets/offsets.o
+ .debug_info    0x000000000001e81d      0x314 /opt/zephyr-sdk/sysroots/i586-poky-elf/usr/lib/i586-poky-elf/5.2.0/libgcc.a(_divdi3.o)
+ .debug_info    0x000000000001eb31      0x2de /opt/zephyr-sdk/sysroots/i586-poky-elf/usr/lib/i586-poky-elf/5.2.0/libgcc.a(_udivdi3.o)
+
+.debug_abbrev   0x0000000000000000     0x8837
+ .debug_abbrev  0x0000000000000000      0x18b src/built-in.o
+ .debug_abbrev  0x000000000000018b     0x3b92 drivers/built-in.o
+ .debug_abbrev  0x0000000000003d1d      0x7c6 lib/built-in.o
+ .debug_abbrev  0x00000000000044e3      0x3a1 misc/built-in.o
+ .debug_abbrev  0x0000000000004884      0x32d boards/built-in.o
+ .debug_abbrev  0x0000000000004bb1      0xed7 arch/built-in.o
+ .debug_abbrev  0x0000000000005a88      0x1e1 kernel/unified/lib.a(device.o)
+ .debug_abbrev  0x0000000000005c69      0x1bf kernel/unified/lib.a(errno.o)
+ .debug_abbrev  0x0000000000005e28      0x3b2 kernel/unified/lib.a(init.o)
+ .debug_abbrev  0x00000000000061da      0x344 kernel/unified/lib.a(legacy_timer.o)
+ .debug_abbrev  0x000000000000651e      0x5b8 kernel/unified/lib.a(sched.o)
+ .debug_abbrev  0x0000000000006ad6      0x565 kernel/unified/lib.a(sem.o)
+ .debug_abbrev  0x000000000000703b      0x409 kernel/unified/lib.a(sys_clock.o)
+ .debug_abbrev  0x0000000000007444      0x603 kernel/unified/lib.a(thread.o)
+ .debug_abbrev  0x0000000000007a47      0x260 kernel/unified/lib.a(thread_abort.o)
+ .debug_abbrev  0x0000000000007ca7      0x4da kernel/unified/lib.a(timer.o)
+ .debug_abbrev  0x0000000000008181      0x29a kernel/unified/lib.a(idle.o)
+ .debug_abbrev  0x000000000000841b      0x1ac ./arch/x86/core/offsets/offsets.o
+ .debug_abbrev  0x00000000000085c7      0x13b /opt/zephyr-sdk/sysroots/i586-poky-elf/usr/lib/i586-poky-elf/5.2.0/libgcc.a(_divdi3.o)
+ .debug_abbrev  0x0000000000008702      0x135 /opt/zephyr-sdk/sysroots/i586-poky-elf/usr/lib/i586-poky-elf/5.2.0/libgcc.a(_udivdi3.o)
+
+.debug_line     0x0000000000000000     0x8c54
+ .debug_line    0x0000000000000000      0x166 src/built-in.o
+ .debug_line    0x0000000000000166     0x365c drivers/built-in.o
+ .debug_line    0x00000000000037c2      0xad4 lib/built-in.o
+ .debug_line    0x0000000000004296      0x3bf misc/built-in.o
+ .debug_line    0x0000000000004655      0x26c boards/built-in.o
+ .debug_line    0x00000000000048c1     0x1357 arch/built-in.o
+ .debug_line    0x0000000000005c18      0x189 kernel/unified/lib.a(device.o)
+ .debug_line    0x0000000000005da1      0x1e8 kernel/unified/lib.a(errno.o)
+ .debug_line    0x0000000000005f89      0x30e kernel/unified/lib.a(init.o)
+ .debug_line    0x0000000000006297      0x2f0 kernel/unified/lib.a(legacy_timer.o)
+ .debug_line    0x0000000000006587      0x6c3 kernel/unified/lib.a(sched.o)
+ .debug_line    0x0000000000006c4a      0x5d4 kernel/unified/lib.a(sem.o)
+ .debug_line    0x000000000000721e      0x41a kernel/unified/lib.a(sys_clock.o)
+ .debug_line    0x0000000000007638      0x7a4 kernel/unified/lib.a(thread.o)
+ .debug_line    0x0000000000007ddc      0x27b kernel/unified/lib.a(thread_abort.o)
+ .debug_line    0x0000000000008057      0x529 kernel/unified/lib.a(timer.o)
+ .debug_line    0x0000000000008580      0x297 kernel/unified/lib.a(idle.o)
+ .debug_line    0x0000000000008817      0x231 ./arch/x86/core/offsets/offsets.o
+ .debug_line    0x0000000000008a48      0x10a /opt/zephyr-sdk/sysroots/i586-poky-elf/usr/lib/i586-poky-elf/5.2.0/libgcc.a(_divdi3.o)
+ .debug_line    0x0000000000008b52      0x102 /opt/zephyr-sdk/sysroots/i586-poky-elf/usr/lib/i586-poky-elf/5.2.0/libgcc.a(_udivdi3.o)
+
+.debug_frame    0x0000000000000000     0x300c
+ .debug_frame   0x0000000000000000       0x54 src/built-in.o
+ .debug_frame   0x0000000000000054     0x12b0 drivers/built-in.o
+ .debug_frame   0x0000000000001304      0x554 lib/built-in.o
+ .debug_frame   0x0000000000001858      0x168 misc/built-in.o
+ .debug_frame   0x00000000000019c0       0xf0 boards/built-in.o
+ .debug_frame   0x0000000000001ab0      0x474 arch/built-in.o
+ .debug_frame   0x0000000000001f24       0xc0 kernel/unified/lib.a(device.o)
+ .debug_frame   0x0000000000001fe4       0x54 kernel/unified/lib.a(errno.o)
+ .debug_frame   0x0000000000002038       0xac kernel/unified/lib.a(init.o)
+ .debug_frame   0x00000000000020e4       0x94 kernel/unified/lib.a(legacy_timer.o)
+ .debug_frame   0x0000000000002178      0x3d8 kernel/unified/lib.a(sched.o)
+ .debug_frame   0x0000000000002550      0x1e8 kernel/unified/lib.a(sem.o)
+ .debug_frame   0x0000000000002738      0x190 kernel/unified/lib.a(sys_clock.o)
+ .debug_frame   0x00000000000028c8      0x40c kernel/unified/lib.a(thread.o)
+ .debug_frame   0x0000000000002cd4       0x7c kernel/unified/lib.a(thread_abort.o)
+ .debug_frame   0x0000000000002d50      0x1fc kernel/unified/lib.a(timer.o)
+ .debug_frame   0x0000000000002f4c       0x6c kernel/unified/lib.a(idle.o)
+ .debug_frame   0x0000000000002fb8       0x54 ./arch/x86/core/offsets/offsets.o
+
+.debug_str      0x0000000000000000     0x50d7
+ .debug_str     0x0000000000000000      0x3d5 src/built-in.o
+                                        0x476 (size before relaxing)
+ .debug_str     0x00000000000003d5     0x2dc1 drivers/built-in.o
+                                       0x89f2 (size before relaxing)
+ .debug_str     0x0000000000003196      0x407 lib/built-in.o
+                                        0xbd0 (size before relaxing)
+ .debug_str     0x000000000000359d      0x1b6 misc/built-in.o
+                                        0x8af (size before relaxing)
+ .debug_str     0x0000000000003753      0x1b0 boards/built-in.o
+                                        0x793 (size before relaxing)
+ .debug_str     0x0000000000003903      0x577 arch/built-in.o
+                                       0x29ee (size before relaxing)
+ .debug_str     0x0000000000003e7a      0x161 kernel/unified/lib.a(device.o)
+                                        0x4e7 (size before relaxing)
+ .debug_str     0x0000000000003fdb       0x4d kernel/unified/lib.a(errno.o)
+                                        0x5cf (size before relaxing)
+ .debug_str     0x0000000000004028      0x15f kernel/unified/lib.a(init.o)
+                                        0x74c (size before relaxing)
+ .debug_str     0x0000000000004187      0x15b kernel/unified/lib.a(legacy_timer.o)
+                                        0x76c (size before relaxing)
+ .debug_str     0x00000000000042e2      0x428 kernel/unified/lib.a(sched.o)
+                                        0xbe4 (size before relaxing)
+ .debug_str     0x000000000000470a      0x170 kernel/unified/lib.a(sem.o)
+                                        0x97a (size before relaxing)
+ .debug_str     0x000000000000487a      0x152 kernel/unified/lib.a(sys_clock.o)
+                                        0x99d (size before relaxing)
+ .debug_str     0x00000000000049cc      0x3ae kernel/unified/lib.a(thread.o)
+                                        0xdbf (size before relaxing)
+ .debug_str     0x0000000000004d7a       0x52 kernel/unified/lib.a(thread_abort.o)
+                                        0x638 (size before relaxing)
+ .debug_str     0x0000000000004dcc       0xbf kernel/unified/lib.a(timer.o)
+                                        0x979 (size before relaxing)
+ .debug_str     0x0000000000004e8b       0x62 kernel/unified/lib.a(idle.o)
+                                        0x675 (size before relaxing)
+ .debug_str     0x0000000000004eed       0x4c ./arch/x86/core/offsets/offsets.o
+                                        0x5ce (size before relaxing)
+ .debug_str     0x0000000000004f39      0x194 /opt/zephyr-sdk/sysroots/i586-poky-elf/usr/lib/i586-poky-elf/5.2.0/libgcc.a(_divdi3.o)
+                                        0x24d (size before relaxing)
+ .debug_str     0x00000000000050cd        0xa /opt/zephyr-sdk/sysroots/i586-poky-elf/usr/lib/i586-poky-elf/5.2.0/libgcc.a(_udivdi3.o)
+                                        0x24e (size before relaxing)
+
+.debug_ranges   0x0000000000000000     0x1a68
+ .debug_ranges  0x0000000000000000       0x18 src/built-in.o
+ .debug_ranges  0x0000000000000018      0xa68 drivers/built-in.o
+ .debug_ranges  0x0000000000000a80      0x228 lib/built-in.o
+ .debug_ranges  0x0000000000000ca8       0x90 misc/built-in.o
+ .debug_ranges  0x0000000000000d38       0x50 boards/built-in.o
+ .debug_ranges  0x0000000000000d88      0x1e0 arch/built-in.o
+ .debug_ranges  0x0000000000000f68       0x40 kernel/unified/lib.a(device.o)
+ .debug_ranges  0x0000000000000fa8       0x18 kernel/unified/lib.a(errno.o)
+ .debug_ranges  0x0000000000000fc0       0x48 kernel/unified/lib.a(init.o)
+ .debug_ranges  0x0000000000001008       0xa8 kernel/unified/lib.a(legacy_timer.o)
+ .debug_ranges  0x00000000000010b0      0x280 kernel/unified/lib.a(sched.o)
+ .debug_ranges  0x0000000000001330      0x1e0 kernel/unified/lib.a(sem.o)
+ .debug_ranges  0x0000000000001510      0x140 kernel/unified/lib.a(sys_clock.o)
+ .debug_ranges  0x0000000000001650      0x200 kernel/unified/lib.a(thread.o)
+ .debug_ranges  0x0000000000001850       0x20 kernel/unified/lib.a(thread_abort.o)
+ .debug_ranges  0x0000000000001870      0x150 kernel/unified/lib.a(timer.o)
+ .debug_ranges  0x00000000000019c0       0x20 kernel/unified/lib.a(idle.o)
+ .debug_ranges  0x00000000000019e0       0x18 ./arch/x86/core/offsets/offsets.o
+ .debug_ranges  0x00000000000019f8       0x28 /opt/zephyr-sdk/sysroots/i586-poky-elf/usr/lib/i586-poky-elf/5.2.0/libgcc.a(_divdi3.o)
+ .debug_ranges  0x0000000000001a20       0x48 /opt/zephyr-sdk/sysroots/i586-poky-elf/usr/lib/i586-poky-elf/5.2.0/libgcc.a(_udivdi3.o)
+
+.debug_loc      0x0000000000000000     0xac8f
+ .debug_loc     0x0000000000000000     0x52da drivers/built-in.o
+ .debug_loc     0x00000000000052da     0x2179 lib/built-in.o
+ .debug_loc     0x0000000000007453      0x515 misc/built-in.o
+ .debug_loc     0x0000000000007968      0x2cb boards/built-in.o
+ .debug_loc     0x0000000000007c33       0xa5 arch/built-in.o
+ .debug_loc     0x0000000000007cd8       0x69 kernel/unified/lib.a(device.o)
+ .debug_loc     0x0000000000007d41       0xaf kernel/unified/lib.a(init.o)
+ .debug_loc     0x0000000000007df0      0x201 kernel/unified/lib.a(legacy_timer.o)
+ .debug_loc     0x0000000000007ff1      0xb33 kernel/unified/lib.a(sched.o)
+ .debug_loc     0x0000000000008b24      0x7db kernel/unified/lib.a(sem.o)
+ .debug_loc     0x00000000000092ff      0x204 kernel/unified/lib.a(sys_clock.o)
+ .debug_loc     0x0000000000009503      0x608 kernel/unified/lib.a(thread.o)
+ .debug_loc     0x0000000000009b0b       0x1f kernel/unified/lib.a(thread_abort.o)
+ .debug_loc     0x0000000000009b2a      0x60e kernel/unified/lib.a(timer.o)
+ .debug_loc     0x000000000000a138      0x504 /opt/zephyr-sdk/sysroots/i586-poky-elf/usr/lib/i586-poky-elf/5.2.0/libgcc.a(_divdi3.o)
+ .debug_loc     0x000000000000a63c      0x653 /opt/zephyr-sdk/sysroots/i586-poky-elf/usr/lib/i586-poky-elf/5.2.0/libgcc.a(_udivdi3.o)

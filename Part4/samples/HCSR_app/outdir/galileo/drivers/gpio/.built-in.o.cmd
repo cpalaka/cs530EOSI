@@ -1,0 +1,1 @@
+cmd_drivers/gpio/built-in.o :=  /opt/zephyr-sdk/sysroots/i686-pokysdk-linux/usr/bin/i586-poky-elf/i586-poky-elf-ld -nostartfiles -nodefaultlibs -nostdlib -static   -r -o drivers/gpio/built-in.o drivers/gpio/gpio_dw.o drivers/gpio/gpio_pcal9535a.o drivers/gpio/gpio_sch.o 
