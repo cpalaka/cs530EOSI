@@ -1,4 +1,4 @@
-# CSE 530 Embedded Operation Systems Internals Project 
+# CSE 530 Embedded Operating Systems Internals Project 
 
 1. HT530 device driver for kernel hashtable and a Kprobe test
 2. Device driver for HC-SR04 sensor with sysfs and platform driver interface
